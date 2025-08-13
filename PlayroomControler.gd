@@ -5,6 +5,8 @@ signal room_not_existing
 #Fetch Playroom
 var Playroom = JavaScriptBridge.get_interface("Playroom")
 
+var player_states := []
+
 var joining = false
  
 # Keep a reference to the callback so it doesn't get garbage collected
@@ -31,36 +33,19 @@ func join_game(code : String):
 	joining = true
 	
 	Playroom.insertCoin(initOptions, bridgeToJS(onInsertCoin));
+
+
+func quit():
+	print("quiting")
+	var js_code = "history.replaceState(null, '', window.location.pathname + window.location.search);"
+	JavaScriptBridge.eval(js_code)
 	
-	#print(getRoomCode() is String)
-	#
-	#var room_loaded = false
-	#while not room_loaded: # Checking if room has loaded
-		#var room_code = getRoomCode()
-		#if room_code is String:
-			#room_loaded = true
-			#print("Room loaded")
-		#
-		#print("not_loaded")
-		#await get_tree().create_timer(0.1).timeout
-	#
-	#await get_tree().create_timer(1).timeout
-	#print(Playroom.isHost())
-	#
-	#if not Playroom.isHost():
-		#get_tree().change_scene_to_file("res://lobby.tscn")
-		#print("existing game")
-	#else:
-		#print("not a valid code")
-		#await Playroom.me().kick()
-		#JavaScriptBridge.eval("
-#const url = new URL(window.location.href); // Get the current URL
-#url.searchParams.delete('r'); // Remove the parameter
-#window.history.pushState({}, '', url); // Update the browser's URL without reloading")
-		#return "Not a valid code"
+	JavaScriptBridge.eval("location.reload();")
+
 
 func _ready():
 	JavaScriptBridge.eval("")
+	
 	
 	var url : String= JavaScriptBridge.eval("window.location.href")
 	if url.contains("#r=R"): # Is an invite link
@@ -71,6 +56,7 @@ params.get('r');
 ", )
 		var RoomCode = Rcode.erase(0)
 		join_game(RoomCode)
+
  
 # Called when the host has started the game
 func onInsertCoin(args):
@@ -98,6 +84,7 @@ func onInsertCoin(args):
 # Called when a new player joins the game
 func onPlayerJoin(args):
 	var state = args[0]
+	player_states.append(state)
 	print("new player joined: ", state.id)
 	
 	# Listen to onQuit event
@@ -105,6 +92,7 @@ func onPlayerJoin(args):
  
 func onPlayerQuit(args):
 	var state = args[0];
+	player_states.erase(state)
 	print("player quit: ", state.id)
 
 func getRoomCode():

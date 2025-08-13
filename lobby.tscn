@@ -1,6 +1,60 @@
-[gd_scene load_steps=2 format=3 uid="uid://cim1mr1tw2qdi"]
+[gd_scene load_steps=19 format=3 uid="uid://cim1mr1tw2qdi"]
 
 [ext_resource type="Script" uid="uid://cectt70f02c8g" path="res://lobby.gd" id="1_ll2xe"]
+[ext_resource type="FontFile" uid="uid://bk8cljd32x2a6" path="res://fonts/FredokaOne-Regular.ttf" id="2_tftiq"]
+[ext_resource type="Texture2D" uid="uid://c3cl7pcrtbgye" path="res://art/code-bx.png" id="3_1gg6n"]
+[ext_resource type="FontFile" uid="uid://bifjmjlp0jm8y" path="res://fonts/Allerta-Regular.ttf" id="4_x4164"]
+[ext_resource type="Texture2D" uid="uid://dn8a3i3eh24ow" path="res://art/lobby box.png" id="5_1gg6n"]
+[ext_resource type="Theme" uid="uid://dp5xifpnhgndh" path="res://resorces/primary button.tres" id="6_x4164"]
+[ext_resource type="FontFile" uid="uid://clivndmyfkxv5" path="res://fonts/Font Awesome 7 Free-Solid-900.otf" id="7_8ldoj"]
+[ext_resource type="FontFile" uid="uid://douxg81f21tp4" path="res://fonts/Fredoka-Regular.ttf" id="8_ein8w"]
+[ext_resource type="PackedScene" uid="uid://bmh20ht2rv6fb" path="res://qrcode.tscn" id="9_gm5bj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8ldoj"]
+font = ExtResource("2_tftiq")
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ein8w"]
+font = ExtResource("4_x4164")
+font_size = 20
+font_color = Color(0, 0, 0, 1)
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ein8w"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gm5bj"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g30ku"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_up7ya"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mcopp"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="Theme" id="Theme_7pn7i"]
+default_font = ExtResource("7_8ldoj")
+default_font_size = 24
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_disabled_color = Color(0.103744, 0.103743, 0.103744, 0.5)
+Button/colors/font_focus_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(0.3, 0.3, 0.3, 1)
+Button/colors/font_hover_pressed_color = Color(0.09, 0.09, 0.09, 1)
+Button/colors/font_pressed_color = Color(0.47, 0.47, 0.47, 1)
+Button/fonts/font = ExtResource("7_8ldoj")
+Button/styles/disabled = SubResource("StyleBoxFlat_ein8w")
+Button/styles/focus = SubResource("StyleBoxFlat_gm5bj")
+Button/styles/hover = SubResource("StyleBoxFlat_g30ku")
+Button/styles/normal = SubResource("StyleBoxFlat_up7ya")
+Button/styles/pressed = SubResource("StyleBoxFlat_mcopp")
+
+[sub_resource type="Theme" id="Theme_gm5bj"]
+Window/fonts/title_font = ExtResource("8_ein8w")
 
 [node name="Lobby" type="Control"]
 layout_mode = 3
@@ -11,19 +65,211 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ll2xe")
 
-[node name="Label" type="Label" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 23.0
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -23.5
+offset_right = 23.5
 grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
 text = "Lobby"
+label_settings = SubResource("LabelSettings_8ldoj")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="."]
-layout_mode = 0
-offset_left = 13.0
-offset_right = 101.0
-offset_bottom = 23.0
-text = "Code:"
+[node name="Control2" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_1gg6n")
+
+[node name="Label2" type="Label" parent="VBoxContainer/VBoxContainer/TextureRect2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -110.0
+offset_top = -24.5
+offset_right = 110.0
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "L o a d i n g"
+label_settings = SubResource("LabelSettings_ein8w")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Control" type="Control" parent="VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 23)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5_1gg6n")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/VBoxContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_right = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control2" type="Control" parent="VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+
+[node name="start" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -110.0
+offset_top = -49.0
+offset_right = 110.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("6_x4164")
+text = "Start Game"
+
+[node name="close" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.064
+anchor_bottom = 0.036
+offset_left = 15.0
+offset_top = 18.0
+theme = SubResource("Theme_7pn7i")
+text = "circle-xmark"
+
+[node name="customize" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.94
+anchor_right = 0.112
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.02
+offset_bottom = -29.0
+grow_vertical = 0
+theme = SubResource("Theme_7pn7i")
+theme_override_font_sizes/font_size = 40
+text = "palette"
+
+[node name="qrcode" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -21.0
+offset_top = 18.0
+offset_right = -15.0
+offset_bottom = 24.0
+grow_horizontal = 0
+theme = SubResource("Theme_7pn7i")
+text = "qrcode"
+
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
+position = Vector2i(18, 296)
+size = Vector2i(339, 100)
+theme = SubResource("Theme_gm5bj")
+ok_button_text = "Leave"
+dialog_text = "Are you sure you want to leave the lobby?"
+
+[node name="QRPanel" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="QRPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.16, 0.16, 0.16, 0.819608)
+
+[node name="QRcontrol" parent="QRPanel" instance=ExtResource("9_gm5bj")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.5
+offset_top = -124.0
+offset_right = 128.5
+offset_bottom = 124.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="copy" type="Button" parent="QRPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -98.5
+offset_top = -49.0
+offset_right = 98.5
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("6_x4164")
+disabled = true
+text = "Copy lobby link"
+
+[node name="close qrpanel" type="Button" parent="QRPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -24.0
+offset_top = 18.0
+offset_right = -13.0
+offset_bottom = 24.0
+grow_horizontal = 0
+theme = SubResource("Theme_7pn7i")
+theme_override_colors/font_disabled_color = Color(0.39, 0, 0.0064999, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.839216, 0, 0.0156863, 1)
+theme_override_colors/font_hover_color = Color(0.97, 0, 0.0161664, 1)
+theme_override_colors/font_color = Color(0.84, 0, 0.0139998, 1)
+theme_override_colors/font_focus_color = Color(0.839216, 0, 0.0156863, 1)
+theme_override_colors/font_pressed_color = Color(0.84, 0.2436, 0.25354, 1)
+disabled = true
+text = "circle-xmark"
+
+[connection signal="pressed" from="close" to="." method="_on_close_pressed"]
+[connection signal="pressed" from="qrcode" to="." method="_on_qrcode_pressed"]
+[connection signal="confirmed" from="ConfirmationDialog" to="." method="_on_confirmation_dialog_confirmed"]
+[connection signal="pressed" from="QRPanel/copy" to="." method="_on_copy_pressed"]
+[connection signal="pressed" from="QRPanel/close qrpanel" to="." method="_on_close_qrpanel_pressed"]

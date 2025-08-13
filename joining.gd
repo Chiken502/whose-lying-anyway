@@ -12,9 +12,13 @@ func _process(delta: float) -> void:
 
 
 func _room_not_existing():
-	$Label.text = "Not A Valid Room Code"
-	$Button.disabled = false
+	$VBoxContainer/Control/Label.text = "Not A Valid Room Code"
+	$VBoxContainer/Button.disabled = false
 
 func _on_button_pressed() -> void:
-	$Button.disabled = true
-	PlayroomControler.join_game($LineEdit.text)
+	$VBoxContainer/Button.disabled = true
+	PlayroomControler.join_game($VBoxContainer/Control/LineEdit.text)
+
+
+func _on_back_pressed() -> void:
+	get_tree().change_scene_to_file("res://main_menu.tscn")

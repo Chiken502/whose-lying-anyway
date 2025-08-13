@@ -13,7 +13,7 @@ config_version=5
 config/name="Whose Lying Anyway?"
 run/main_scene="uid://elms5ca3xlmf"
 config/features=PackedStringArray("4.4", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="uid://gb0nos4c46d7"
 
 [autoload]
 
@@ -29,3 +29,4 @@ window/stretch/mode="canvas_items"
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.941176, 0.960784, 0.862745, 1)

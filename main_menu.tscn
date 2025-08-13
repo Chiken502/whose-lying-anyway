@@ -1,6 +1,55 @@
-[gd_scene load_steps=2 format=3 uid="uid://elms5ca3xlmf"]
+[gd_scene load_steps=17 format=3 uid="uid://elms5ca3xlmf"]
 
 [ext_resource type="Script" uid="uid://b024hbbrfqnu8" path="res://main_menu.gd" id="1_06t4h"]
+[ext_resource type="Texture2D" uid="uid://8otpkf5vjubw" path="res://art/hat.png" id="2_qe12f"]
+[ext_resource type="FontFile" uid="uid://bk8cljd32x2a6" path="res://fonts/FredokaOne-Regular.ttf" id="3_8qtwp"]
+[ext_resource type="FontFile" uid="uid://douxg81f21tp4" path="res://fonts/Fredoka-Regular.ttf" id="4_dy7ct"]
+[ext_resource type="Theme" uid="uid://dp5xifpnhgndh" path="res://resorces/primary button.tres" id="5_0o4t1"]
+[ext_resource type="Theme" uid="uid://cuy8d6irqxixy" path="res://resorces/secondary button.tres" id="6_0k4wn"]
+[ext_resource type="FontFile" uid="uid://clivndmyfkxv5" path="res://fonts/Font Awesome 7 Free-Solid-900.otf" id="7_qe12f"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_iotk1"]
+font = ExtResource("3_8qtwp")
+font_size = 32
+font_color = Color(0.239216, 0.258824, 0.286275, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_w44g7"]
+font = ExtResource("4_dy7ct")
+font_size = 15
+font_color = Color(0.239216, 0.258824, 0.286275, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qe12f"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ein8w"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gm5bj"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g30ku"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_up7ya"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mcopp"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="Theme" id="Theme_qe12f"]
+default_font = ExtResource("7_qe12f")
+default_font_size = 24
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_disabled_color = Color(0.103744, 0.103743, 0.103744, 0.5)
+Button/colors/font_focus_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(0.3, 0.3, 0.3, 1)
+Button/colors/font_hover_pressed_color = Color(0.09, 0.09, 0.09, 1)
+Button/colors/font_pressed_color = Color(0.47, 0.47, 0.47, 1)
+Button/fonts/font = ExtResource("7_qe12f")
+Button/styles/disabled = SubResource("StyleBoxFlat_ein8w")
+Button/styles/focus = SubResource("StyleBoxFlat_gm5bj")
+Button/styles/hover = SubResource("StyleBoxFlat_g30ku")
+Button/styles/normal = SubResource("StyleBoxFlat_up7ya")
+Button/styles/pressed = SubResource("StyleBoxFlat_mcopp")
 
 [node name="Main Menu" type="Control"]
 layout_mode = 3
@@ -21,16 +70,68 @@ offset_left = -47.0
 offset_right = 47.0
 grow_horizontal = 2
 grow_vertical = 2
-alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Host" type="Button" parent="VBoxContainer"]
+[node name="Control3" type="Control" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer/Control3"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_qe12f")
+offset = Vector2(0, 129)
+
+[node name="Control2" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 97)
+layout_mode = 2
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Whose Lying 
+Anyway?"
+label_settings = SubResource("LabelSettings_iotk1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="credits" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Made By Ben"
+label_settings = SubResource("LabelSettings_w44g7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 180)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Host" type="Button" parent="VBoxContainer/VBoxContainer"]
+material = SubResource("ShaderMaterial_qe12f")
+layout_mode = 2
+theme = ExtResource("5_0o4t1")
 text = "Host Game"
 
-[node name="Join" type="Button" parent="VBoxContainer"]
+[node name="Join" type="Button" parent="VBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("6_0k4wn")
 text = "Join"
 
-[connection signal="pressed" from="VBoxContainer/Host" to="." method="_on_host_pressed"]
-[connection signal="pressed" from="VBoxContainer/Join" to="." method="_on_join_pressed"]
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = -18.0
+grow_vertical = 0
+theme = SubResource("Theme_qe12f")
+theme_override_font_sizes/font_size = 40
+text = "gear"
+
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/Join" to="." method="_on_join_pressed"]
