@@ -1,0 +1,27 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://cr6a8lrg0jxpl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nmd03"]
+draw_center = false
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4txcf"]
+border_width_left = 30
+border_width_top = 5
+border_width_right = 30
+border_width_bottom = 5
+border_color = Color(0.261157, 0.945246, 0.469372, 1)
+border_blend = true
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[resource]
+Button/styles/disabled = SubResource("StyleBoxFlat_nmd03")
+Button/styles/focus = SubResource("StyleBoxFlat_nmd03")
+Button/styles/hover = SubResource("StyleBoxFlat_nmd03")
+Button/styles/normal = SubResource("StyleBoxFlat_nmd03")
+Button/styles/pressed = SubResource("StyleBoxFlat_4txcf")

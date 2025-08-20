@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=3 uid="uid://dqxvm7bu873gi"]
+
+[ext_resource type="Script" uid="uid://drbibcq48b3so" path="res://lobby_title.gd" id="1_qkshp"]
+[ext_resource type="FontFile" uid="uid://i4id1a1pbprl" path="res://fonts/Fredoka-Medium.ttf" id="2_22q8j"]
+[ext_resource type="Texture2D" uid="uid://gb0nos4c46d7" path="res://art/icon.png" id="2_qkshp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_22q8j"]
+bg_color = Color(0.0941176, 0.0470588, 0.0627451, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="Theme" id="Theme_qkshp"]
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_22q8j")
+
+[sub_resource type="LabelSettings" id="LabelSettings_qkshp"]
+font = ExtResource("2_22q8j")
+font_size = 20
+font_color = Color(0.941176, 0.960784, 0.862745, 1)
+
+[node name="LobbyTitle" type="Control"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 3
+anchor_right = 1.0
+anchor_bottom = 0.06
+offset_bottom = -0.0200005
+grow_horizontal = 2
+script = ExtResource("1_qkshp")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_qkshp")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+grow_vertical = 2
+texture = ExtResource("2_qkshp")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 52.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Loading"
+label_settings = SubResource("LabelSettings_qkshp")
+vertical_alignment = 1

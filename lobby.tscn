@@ -125,15 +125,20 @@ layout_mode = 2
 layout_mode = 2
 texture = ExtResource("5_1gg6n")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/VBoxContainer/TextureRect"]
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/VBoxContainer/TextureRect"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 10.0
-offset_right = -10.0
 grow_horizontal = 2
 grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/VBoxContainer/TextureRect/ScrollContainer"]
+custom_minimum_size = Vector2(190, 0)
+layout_mode = 2
+theme_override_constants/separation = 10
 
 [node name="Control2" type="Control" parent="VBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 75)
@@ -231,23 +236,6 @@ offset_bottom = 124.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="copy" type="Button" parent="QRPanel"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -98.5
-offset_top = -49.0
-offset_right = 98.5
-offset_bottom = -100.0
-grow_horizontal = 2
-grow_vertical = 0
-theme = ExtResource("6_x4164")
-disabled = true
-text = "Copy lobby link"
-
 [node name="close qrpanel" type="Button" parent="QRPanel"]
 layout_mode = 1
 anchors_preset = -1
@@ -268,8 +256,31 @@ theme_override_colors/font_pressed_color = Color(0.84, 0.2436, 0.25354, 1)
 disabled = true
 text = "circle-xmark"
 
+[node name="copy" type="LineEdit" parent="QRPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -56.0
+offset_top = -168.0
+offset_right = 56.0
+offset_bottom = -137.0
+grow_horizontal = 2
+grow_vertical = 0
+placeholder_text = "Your Code"
+alignment = 1
+max_length = 4
+editable = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+drag_and_drop_selection_enabled = false
+
 [connection signal="pressed" from="close" to="." method="_on_close_pressed"]
+[connection signal="pressed" from="customize" to="." method="_on_customize_pressed"]
 [connection signal="pressed" from="qrcode" to="." method="_on_qrcode_pressed"]
 [connection signal="confirmed" from="ConfirmationDialog" to="." method="_on_confirmation_dialog_confirmed"]
-[connection signal="pressed" from="QRPanel/copy" to="." method="_on_copy_pressed"]
 [connection signal="pressed" from="QRPanel/close qrpanel" to="." method="_on_close_qrpanel_pressed"]

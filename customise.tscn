@@ -1,0 +1,216 @@
+[gd_scene load_steps=29 format=3 uid="uid://nlv43ppw08wh"]
+
+[ext_resource type="Theme" uid="uid://1rt6ffl40eg" path="res://resorces/font-awesome-icons.tres" id="1_06xt3"]
+[ext_resource type="Script" uid="uid://rhuucs614m6r" path="res://customise.gd" id="1_wjl4b"]
+[ext_resource type="Theme" uid="uid://dp5xifpnhgndh" path="res://resorces/primary button.tres" id="2_j6mtn"]
+[ext_resource type="FontFile" uid="uid://douxg81f21tp4" path="res://fonts/Fredoka-Regular.ttf" id="3_g6hab"]
+[ext_resource type="Texture2D" uid="uid://ba17wr3igeq8p" path="res://art/join-text-box.png" id="4_kilu6"]
+[ext_resource type="Script" uid="uid://bysffchi16s3i" path="res://addons/addons/onscreenkeyboard/onscreen_keyboard.gd" id="5_kilu6"]
+[ext_resource type="ButtonGroup" uid="uid://de6dhuhsmjou" path="res://resorces/customize.tres" id="7_htcbd"]
+[ext_resource type="Texture2D" uid="uid://d2odpmo72slox" path="res://art/avatars/avatars_elephant.png" id="7_nmd03"]
+[ext_resource type="Texture2D" uid="uid://c7v8oh1ndim3b" path="res://art/avatars/avatars_crab.png" id="7_wvnvw"]
+[ext_resource type="Texture2D" uid="uid://cwx7eokklabuw" path="res://art/avatars/avatars-check_crab.png" id="8_wvnvw"]
+[ext_resource type="Texture2D" uid="uid://7dy5sq5e7kf6" path="res://art/avatars/avatars_Loin.png" id="10_3336s"]
+[ext_resource type="Texture2D" uid="uid://p7cls6oougc2" path="res://art/avatars/avatars-check_elephant.png" id="10_bp147"]
+[ext_resource type="Texture2D" uid="uid://dymie88xr0ps1" path="res://art/avatars/avatars_octopus.png" id="11_iedbk"]
+[ext_resource type="Texture2D" uid="uid://c6to5uwsqybc" path="res://art/avatars/avatars_parot.png" id="12_bp147"]
+[ext_resource type="Texture2D" uid="uid://cg3u2jykglw32" path="res://art/avatars/avatars-check_lion.png" id="12_ershq"]
+[ext_resource type="Texture2D" uid="uid://cwmo404hfyeya" path="res://art/avatars/avatars_penguin.png" id="13_6aif7"]
+[ext_resource type="Texture2D" uid="uid://1nispehsh3m4" path="res://art/avatars/avatars_seal.png" id="13_a13qd"]
+[ext_resource type="Texture2D" uid="uid://1ym3tt1a1mij" path="res://art/avatars/avatars-check_octopus.png" id="14_6aif7"]
+[ext_resource type="Texture2D" uid="uid://mch7dtwkgm6a" path="res://art/avatars/avatars_puffin.png" id="14_bf4o6"]
+[ext_resource type="Texture2D" uid="uid://5tlcdisicebw" path="res://art/avatars/avatars-check_parrot.png" id="16_ajoli"]
+[ext_resource type="Texture2D" uid="uid://bja5dv0lk1x3g" path="res://art/avatars/avatars_starfish.png" id="16_htcbd"]
+[ext_resource type="Texture2D" uid="uid://bq3mlvy1nfc6q" path="res://art/avatars/avatars-check_penguin.png" id="18_wjl4b"]
+[ext_resource type="Texture2D" uid="uid://dq8t005k71jts" path="res://art/avatars/avatars-check_Puffin.png" id="20_yy5hh"]
+[ext_resource type="Texture2D" uid="uid://c1hhjd65my4tb" path="res://art/avatars/avatars-check_seal.png" id="22_68h72"]
+[ext_resource type="Texture2D" uid="uid://cy5v4v8i1uwti" path="res://art/avatars/avatars-check_starfish.png" id="24_pvjt7"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_81gjf"]
+texture = ExtResource("4_kilu6")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_byfj3"]
+texture = ExtResource("4_kilu6")
+
+[sub_resource type="Theme" id="Theme_c75wi"]
+LineEdit/colors/caret_color = Color(0.29, 0.29, 0.29, 1)
+LineEdit/colors/font_color = Color(0.23754, 0.237539, 0.237539, 1)
+LineEdit/colors/font_placeholder_color = Color(0.23754, 0.237539, 0.237539, 0.6)
+LineEdit/constants/caret_width = 1
+LineEdit/font_sizes/font_size = 20
+LineEdit/fonts/font = ExtResource("3_g6hab")
+LineEdit/styles/focus = SubResource("StyleBoxTexture_81gjf")
+LineEdit/styles/normal = SubResource("StyleBoxTexture_byfj3")
+LineEdit/styles/read_only = null
+
+[node name="Customise" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wjl4b")
+
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
+title = "Are You Sure..."
+initial_position = 1
+size = Vector2i(330, 158)
+ok_button_text = "Go To Lobby"
+dialog_text = "Are you sure you want to go back to the lobby screen without saving your new look?"
+dialog_autowrap = true
+
+[node name="back" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 25.0
+offset_top = 25.0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("1_06xt3")
+theme_override_font_sizes/font_size = 40
+text = "arrow-left"
+
+[node name="save" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -53.5
+offset_top = -49.0
+offset_right = 53.5
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_j6mtn")
+text = "Save"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -146.5
+offset_top = -192.5
+offset_right = 146.5
+offset_bottom = 192.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control2" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/Control2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -146.5
+offset_top = -16.0
+offset_right = 146.5
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_c75wi")
+placeholder_text = "  Name"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("7_htcbd")
+texture_normal = ExtResource("7_wvnvw")
+texture_pressed = ExtResource("8_wvnvw")
+
+[node name="TextureButton2" type="TextureButton" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("7_htcbd")
+texture_normal = ExtResource("7_nmd03")
+texture_pressed = ExtResource("10_bp147")
+
+[node name="TextureButton3" type="TextureButton" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("7_htcbd")
+texture_normal = ExtResource("10_3336s")
+texture_pressed = ExtResource("12_ershq")
+
+[node name="TextureButton4" type="TextureButton" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("7_htcbd")
+texture_normal = ExtResource("11_iedbk")
+texture_pressed = ExtResource("14_6aif7")
+
+[node name="TextureButton5" type="TextureButton" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("7_htcbd")
+texture_normal = ExtResource("12_bp147")
+texture_pressed = ExtResource("16_ajoli")
+
+[node name="TextureButton6" type="TextureButton" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("7_htcbd")
+texture_normal = ExtResource("13_6aif7")
+texture_pressed = ExtResource("18_wjl4b")
+
+[node name="TextureButton7" type="TextureButton" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("7_htcbd")
+texture_normal = ExtResource("14_bf4o6")
+texture_pressed = ExtResource("20_yy5hh")
+
+[node name="TextureButton8" type="TextureButton" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("7_htcbd")
+texture_normal = ExtResource("13_a13qd")
+texture_pressed = ExtResource("22_68h72")
+
+[node name="TextureButton9" type="TextureButton" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("7_htcbd")
+texture_normal = ExtResource("16_htcbd")
+texture_pressed = ExtResource("24_pvjt7")
+
+[node name="OnscreenKeyboard" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -187.5
+offset_top = -141.0
+offset_right = 188.5
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("5_kilu6")
+metadata/_custom_type_script = "uid://bysffchi16s3i"
+
+[connection signal="confirmed" from="ConfirmationDialog" to="." method="_on_confirmation_dialog_confirmed"]
+[connection signal="pressed" from="back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="save" to="." method="_on_save_pressed"]

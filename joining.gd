@@ -4,6 +4,13 @@ extends Control
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	PlayroomControler.room_not_existing.connect(_room_not_existing)
+	#var is_ios = JavaScriptBridge.eval("
+  #(function() {
+	#return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  #})()
+#`);")
+	var is_ios = JavaScriptBridge.eval("(function() { return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent); })()");
+	$OnscreenKeyboard.auto_show = is_ios
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

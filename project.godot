@@ -18,12 +18,17 @@ config/icon="uid://gb0nos4c46d7"
 [autoload]
 
 PlayroomControler="*res://PlayroomControler.gd"
+RPCstate="*res://RPCstate.gd"
 
 [display]
 
 window/size/viewport_width=375
 window/size/viewport_height=667
 window/stretch/mode="canvas_items"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/addons/onscreenkeyboard/plugin.cfg", "res://addons/project_time/plugin.cfg")
 
 [rendering]
 
