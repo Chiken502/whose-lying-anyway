@@ -1,0 +1,130 @@
+[gd_scene load_steps=9 format=3 uid="uid://demt485tq080i"]
+
+[ext_resource type="FontFile" uid="uid://bk8cljd32x2a6" path="res://fonts/FredokaOne-Regular.ttf" id="1_b2a8x"]
+[ext_resource type="Texture2D" uid="uid://di5r68kt2yac7" path="res://art/loading.png" id="2_8biey"]
+
+[sub_resource type="Gradient" id="Gradient_1l04a"]
+colors = PackedColorArray(1, 0.870588, 0.403922, 1, 0.0470588, 0.027451, 0.152941, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_b2a8x"]
+gradient = SubResource("Gradient_1l04a")
+fill_from = Vector2(1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_a5xf6"]
+font = ExtResource("1_b2a8x")
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_yhqpn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:offset_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-82.0]
+}
+
+[sub_resource type="Animation" id="Animation_thdhr"]
+resource_name = "load"
+length = 1.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:offset_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8, 1.6),
+"transitions": PackedFloat32Array(1, 2.21914, 0.225313),
+"update": 0,
+"values": [-82.0, -98.0, -82.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ghsna"]
+_data = {
+&"RESET": SubResource("Animation_yhqpn"),
+&"load": SubResource("Animation_thdhr")
+}
+
+[node name="waiting" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 376.0
+offset_bottom = 667.0
+texture = SubResource("GradientTexture2D_b2a8x")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -172.0
+offset_top = -82.0
+offset_right = 172.0
+offset_bottom = 155.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Waiting for the slackers"
+label_settings = SubResource("LabelSettings_a5xf6")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 186.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Control"]
+texture = ExtResource("2_8biey")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ghsna")
+}
+autoplay = "load"

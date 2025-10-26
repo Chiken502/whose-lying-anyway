@@ -1,0 +1,112 @@
+[gd_scene load_steps=9 format=3 uid="uid://snfg3fe8omi1"]
+
+[ext_resource type="Script" uid="uid://cikm054vg7vs1" path="res://results.gd" id="1_5erdf"]
+[ext_resource type="FontFile" uid="uid://del0lm4mxab10" path="res://fonts/Jaro-Regular.ttf" id="1_amp1b"]
+[ext_resource type="FontFile" uid="uid://coasokk6f2ok0" path="res://fonts/KayPhoDu-Regular.ttf" id="3_e1an3"]
+[ext_resource type="FontFile" uid="uid://xrq2gs2d7qiw" path="res://fonts/KayPhoDu-Bold.ttf" id="3_ph8o5"]
+[ext_resource type="Theme" uid="uid://bajyshsvf048u" path="res://resorces/Button.tres" id="6_7jyyn"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mabgl"]
+font = ExtResource("1_amp1b")
+font_size = 48
+font_color = Color(0.831373, 0.796078, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_7jyyn"]
+font = ExtResource("3_ph8o5")
+font_size = 18
+font_color = Color(0.427451, 0.345098, 0.882353, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ph8o5"]
+font = ExtResource("3_e1an3")
+font_size = 20
+font_color = Color(0.831373, 0.796078, 1, 1)
+
+[node name="Results" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5erdf")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0470588, 0.027451, 0.152941, 1)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -123.5
+offset_right = 132.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Results"
+label_settings = SubResource("LabelSettings_mabgl")
+horizontal_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+color = Color(0.831373, 0.796078, 1, 1)
+
+[node name="spacer" type="Control" parent="ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="winner" type="Label" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Chicken502 won with..."
+label_settings = SubResource("LabelSettings_7jyyn")
+horizontal_alignment = 1
+
+[node name="sentance" type="Label" parent="ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "A Giant Bear came out of nowhere and said “MY NAME IS DARLEEN AND I WOULD LOVE TO EAT”."
+label_settings = SubResource("LabelSettings_ph8o5")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="spacer2" type="Control" parent="ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Score containers" type="VBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="continue" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -60.0
+offset_right = 128.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("6_7jyyn")
+text = "Continue"
+
+[connection signal="pressed" from="continue" to="." method="_on_continue_pressed"]

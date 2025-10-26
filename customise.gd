@@ -5,7 +5,7 @@ var org_player_avatar_idx : int
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var is_ios = JavaScriptBridge.eval("(function() { return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent); })()");
+	var is_ios = JavaScriptBridge.eval("(function() { return /webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent); })()");
 	$OnscreenKeyboard.auto_show = is_ios
 	
 	var player = PlayroomControler.Playroom.me()
@@ -15,7 +15,7 @@ func _ready() -> void:
 	$VBoxContainer/Control2/LineEdit.text = org_player_name
 	
 	var avatar_buttons = $VBoxContainer/GridContainer.get_children()
-	avatar_buttons[org_player_avatar_idx].button_pressed = true
+	avatar_buttons[org_player_avatar_idx].get_child(0).button_pressed = true
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -53,7 +53,7 @@ func get_new_avatar_idx() -> int:
 	var grid = $VBoxContainer/GridContainer
 	var button_arr = grid.get_children()
 	for i in range(button_arr.size()):
-		var button = button_arr[i]
+		var button = button_arr[i].get_children()[0]
 		if button.button_pressed:
 			index = i
 			break

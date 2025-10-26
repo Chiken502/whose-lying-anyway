@@ -1,0 +1,163 @@
+[gd_scene load_steps=15 format=3 uid="uid://2hyx1pj3nvho"]
+
+[ext_resource type="Theme" uid="uid://bajyshsvf048u" path="res://resorces/Button.tres" id="1_pydus"]
+[ext_resource type="Script" uid="uid://buve2bs5clvv8" path="res://judge_chamber.gd" id="1_tktgc"]
+[ext_resource type="FontFile" uid="uid://del0lm4mxab10" path="res://fonts/Jaro-Regular.ttf" id="2_d2oi8"]
+[ext_resource type="FontFile" uid="uid://cfugcwniib2a7" path="res://fonts/KayPhoDu-SemiBold.ttf" id="4_chayj"]
+[ext_resource type="FontFile" uid="uid://xrq2gs2d7qiw" path="res://fonts/KayPhoDu-Bold.ttf" id="4_d2oi8"]
+[ext_resource type="Texture2D" uid="uid://bbb437i2wybyf" path="res://art/emojis/face-with-tears-of-joy_1f602.png" id="5_0wyh8"]
+[ext_resource type="Texture2D" uid="uid://cxjqkia3wk8fm" path="res://art/emojis/open-book_1f4d6.png" id="6_uwpfb"]
+[ext_resource type="Texture2D" uid="uid://2mkyvwgt5vy5" path="res://art/emojis/thinking-face_1f914.png" id="7_0vop4"]
+
+[sub_resource type="Gradient" id="Gradient_0wyh8"]
+colors = PackedColorArray(0.0470588, 0.027451, 0.152941, 1, 0.172549, 0.109804, 0.509804, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_uwpfb"]
+gradient = SubResource("Gradient_0wyh8")
+fill_from = Vector2(1, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0wyh8"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_0vop4"]
+font = ExtResource("2_d2oi8")
+font_size = 35
+
+[sub_resource type="Theme" id="Theme_tktgc"]
+OptionButton/fonts/font = ExtResource("4_d2oi8")
+
+[sub_resource type="LabelSettings" id="LabelSettings_bu61r"]
+font = ExtResource("4_chayj")
+
+[node name="Judge Chamber" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tktgc")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_uwpfb")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_right = -55.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_0wyh8")
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Your A Judge!"
+label_settings = SubResource("LabelSettings_0vop4")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="ButtonContainer" type="VBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="spacer" type="Control" parent="ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+
+[node name="OptionContainer" type="VBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="OptionButton" type="OptionButton" parent="ScrollContainer/VBoxContainer/OptionContainer"]
+layout_mode = 2
+theme = SubResource("Theme_tktgc")
+item_count = 1
+popup/item_0/text = "None"
+popup/item_0/id = 0
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/OptionContainer/OptionButton"]
+layout_mode = 0
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 3.0
+text = "    Funniest Bonus"
+label_settings = SubResource("LabelSettings_bu61r")
+
+[node name="Sprite2D" type="Sprite2D" parent="ScrollContainer/VBoxContainer/OptionContainer/OptionButton/Label"]
+position = Vector2(12, 10)
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("5_0wyh8")
+
+[node name="OptionButton2" type="OptionButton" parent="ScrollContainer/VBoxContainer/OptionContainer"]
+layout_mode = 2
+item_count = 1
+popup/item_0/text = "None"
+popup/item_0/id = 0
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/OptionContainer/OptionButton2"]
+layout_mode = 0
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 3.0
+text = "    Plot Twist Bonus"
+label_settings = SubResource("LabelSettings_bu61r")
+
+[node name="Sprite2D" type="Sprite2D" parent="ScrollContainer/VBoxContainer/OptionContainer/OptionButton2/Label"]
+position = Vector2(11, 9)
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("6_uwpfb")
+
+[node name="OptionButton3" type="OptionButton" parent="ScrollContainer/VBoxContainer/OptionContainer"]
+layout_mode = 2
+item_count = 1
+popup/item_0/text = "None"
+popup/item_0/id = 0
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/OptionContainer/OptionButton3"]
+layout_mode = 0
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 3.0
+text = "    Callback Bonus"
+label_settings = SubResource("LabelSettings_bu61r")
+
+[node name="Sprite2D" type="Sprite2D" parent="ScrollContainer/VBoxContainer/OptionContainer/OptionButton3/Label"]
+position = Vector2(11, 10)
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("7_0vop4")
+
+[node name="Button" type="Button" parent="."]
+top_level = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -125.0
+offset_top = -67.0
+offset_right = 125.0
+offset_bottom = -27.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_pydus")
+text = "Submit"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

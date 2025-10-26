@@ -1,11 +1,19 @@
-[gd_scene load_steps=11 format=3 uid="uid://cninwqt3xqn2g"]
+[gd_scene load_steps=13 format=3 uid="uid://cninwqt3xqn2g"]
 
 [ext_resource type="Script" uid="uid://de54cnpa6q3jk" path="res://joining.gd" id="1_fuegy"]
-[ext_resource type="Theme" uid="uid://dp5xifpnhgndh" path="res://resorces/primary button.tres" id="2_6vr3o"]
 [ext_resource type="FontFile" uid="uid://douxg81f21tp4" path="res://fonts/Fredoka-Regular.ttf" id="2_p3awv"]
 [ext_resource type="Theme" uid="uid://1rt6ffl40eg" path="res://resorces/font-awesome-icons.tres" id="3_6vr3o"]
 [ext_resource type="Texture2D" uid="uid://ba17wr3igeq8p" path="res://art/join-text-box.png" id="3_tdxbx"]
+[ext_resource type="Theme" uid="uid://bajyshsvf048u" path="res://resorces/Button.tres" id="4_tdxbx"]
 [ext_resource type="Script" uid="uid://bysffchi16s3i" path="res://addons/addons/onscreenkeyboard/onscreen_keyboard.gd" id="6_tdxbx"]
+
+[sub_resource type="Gradient" id="Gradient_tdxbx"]
+colors = PackedColorArray(0.427451, 0.345098, 0.882353, 1, 0.831373, 0.796078, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_81gjf"]
+gradient = SubResource("Gradient_tdxbx")
+fill_from = Vector2(1, 1)
+metadata/_snap_enabled = true
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_81gjf"]
 texture = ExtResource("3_tdxbx")
@@ -35,6 +43,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fuegy")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_81gjf")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -68,6 +85,7 @@ alignment = 1
 max_length = 4
 context_menu_enabled = false
 emoji_menu_enabled = false
+virtual_keyboard_enabled = false
 clear_button_enabled = true
 select_all_on_focus = true
 
@@ -88,8 +106,9 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Button" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
-theme = ExtResource("2_6vr3o")
+theme = ExtResource("4_tdxbx")
 text = "Join"
 
 [node name="back" type="Button" parent="."]

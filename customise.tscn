@@ -1,30 +1,32 @@
-[gd_scene load_steps=29 format=3 uid="uid://nlv43ppw08wh"]
+[gd_scene load_steps=25 format=3 uid="uid://nlv43ppw08wh"]
 
 [ext_resource type="Theme" uid="uid://1rt6ffl40eg" path="res://resorces/font-awesome-icons.tres" id="1_06xt3"]
 [ext_resource type="Script" uid="uid://rhuucs614m6r" path="res://customise.gd" id="1_wjl4b"]
-[ext_resource type="Theme" uid="uid://dp5xifpnhgndh" path="res://resorces/primary button.tres" id="2_j6mtn"]
 [ext_resource type="FontFile" uid="uid://douxg81f21tp4" path="res://fonts/Fredoka-Regular.ttf" id="3_g6hab"]
+[ext_resource type="Theme" uid="uid://bajyshsvf048u" path="res://resorces/Button.tres" id="3_ruak8"]
 [ext_resource type="Texture2D" uid="uid://ba17wr3igeq8p" path="res://art/join-text-box.png" id="4_kilu6"]
 [ext_resource type="Script" uid="uid://bysffchi16s3i" path="res://addons/addons/onscreenkeyboard/onscreen_keyboard.gd" id="5_kilu6"]
+[ext_resource type="Texture2D" uid="uid://citjjen6xmv36" path="res://art/avatars/avatar_1.png" id="6_wvnvw"]
 [ext_resource type="ButtonGroup" uid="uid://de6dhuhsmjou" path="res://resorces/customize.tres" id="7_htcbd"]
-[ext_resource type="Texture2D" uid="uid://d2odpmo72slox" path="res://art/avatars/avatars_elephant.png" id="7_nmd03"]
-[ext_resource type="Texture2D" uid="uid://c7v8oh1ndim3b" path="res://art/avatars/avatars_crab.png" id="7_wvnvw"]
-[ext_resource type="Texture2D" uid="uid://cwx7eokklabuw" path="res://art/avatars/avatars-check_crab.png" id="8_wvnvw"]
-[ext_resource type="Texture2D" uid="uid://7dy5sq5e7kf6" path="res://art/avatars/avatars_Loin.png" id="10_3336s"]
-[ext_resource type="Texture2D" uid="uid://p7cls6oougc2" path="res://art/avatars/avatars-check_elephant.png" id="10_bp147"]
-[ext_resource type="Texture2D" uid="uid://dymie88xr0ps1" path="res://art/avatars/avatars_octopus.png" id="11_iedbk"]
-[ext_resource type="Texture2D" uid="uid://c6to5uwsqybc" path="res://art/avatars/avatars_parot.png" id="12_bp147"]
-[ext_resource type="Texture2D" uid="uid://cg3u2jykglw32" path="res://art/avatars/avatars-check_lion.png" id="12_ershq"]
-[ext_resource type="Texture2D" uid="uid://cwmo404hfyeya" path="res://art/avatars/avatars_penguin.png" id="13_6aif7"]
-[ext_resource type="Texture2D" uid="uid://1nispehsh3m4" path="res://art/avatars/avatars_seal.png" id="13_a13qd"]
-[ext_resource type="Texture2D" uid="uid://1ym3tt1a1mij" path="res://art/avatars/avatars-check_octopus.png" id="14_6aif7"]
-[ext_resource type="Texture2D" uid="uid://mch7dtwkgm6a" path="res://art/avatars/avatars_puffin.png" id="14_bf4o6"]
-[ext_resource type="Texture2D" uid="uid://5tlcdisicebw" path="res://art/avatars/avatars-check_parrot.png" id="16_ajoli"]
-[ext_resource type="Texture2D" uid="uid://bja5dv0lk1x3g" path="res://art/avatars/avatars_starfish.png" id="16_htcbd"]
-[ext_resource type="Texture2D" uid="uid://bq3mlvy1nfc6q" path="res://art/avatars/avatars-check_penguin.png" id="18_wjl4b"]
-[ext_resource type="Texture2D" uid="uid://dq8t005k71jts" path="res://art/avatars/avatars-check_Puffin.png" id="20_yy5hh"]
-[ext_resource type="Texture2D" uid="uid://c1hhjd65my4tb" path="res://art/avatars/avatars-check_seal.png" id="22_68h72"]
-[ext_resource type="Texture2D" uid="uid://cy5v4v8i1uwti" path="res://art/avatars/avatars-check_starfish.png" id="24_pvjt7"]
+[ext_resource type="Texture2D" uid="uid://b57vmqjk5lvgj" path="res://art/avatars/avatar_1-check.png" id="7_oj4yy"]
+[ext_resource type="Texture2D" uid="uid://cphf6pwy3robc" path="res://art/avatars/avatar_2.png" id="9_ruak8"]
+[ext_resource type="Texture2D" uid="uid://c8eufe48ebc5x" path="res://art/avatars/avatar_2-check.png" id="10_oaqao"]
+[ext_resource type="Texture2D" uid="uid://bss3ttsc7kxvp" path="res://art/avatars/avatar_3.png" id="11_8lj5j"]
+[ext_resource type="Texture2D" uid="uid://cmh65ghcweh7v" path="res://art/avatars/avatar_3-check.png" id="12_q5xot"]
+[ext_resource type="Texture2D" uid="uid://djkv1rrcf8pv8" path="res://art/avatars/avatar_4.png" id="13_lr3no"]
+[ext_resource type="Texture2D" uid="uid://sa1iong3wywi" path="res://art/avatars/avatar_4-check.png" id="14_ajoli"]
+[ext_resource type="Texture2D" uid="uid://b1ki4ea2vvxnt" path="res://art/avatars/avatar_5.png" id="15_wjl4b"]
+[ext_resource type="Texture2D" uid="uid://bs725ddq0b8k5" path="res://art/avatars/avatar_5-check.png" id="16_yy5hh"]
+[ext_resource type="Texture2D" uid="uid://ctdv3kaeynld0" path="res://art/avatars/avatar_6.png" id="17_68h72"]
+[ext_resource type="Texture2D" uid="uid://cqxyfvk1x0s8m" path="res://art/avatars/avatar_6-check.png" id="18_pvjt7"]
+
+[sub_resource type="Gradient" id="Gradient_ruak8"]
+colors = PackedColorArray(0.427451, 0.345098, 0.882353, 1, 0.831373, 0.796078, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_oaqao"]
+gradient = SubResource("Gradient_ruak8")
+fill_from = Vector2(1, 1)
+metadata/_snap_enabled = true
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_81gjf"]
 texture = ExtResource("4_kilu6")
@@ -52,6 +54,15 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_wjl4b")
 
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_oaqao")
+
 [node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
 title = "Are You Sure..."
 initial_position = 1
@@ -78,13 +89,13 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -53.5
-offset_top = -49.0
-offset_right = 53.5
+offset_left = -108.5
+offset_top = -70.0
+offset_right = 108.5
 offset_bottom = -30.0
 grow_horizontal = 2
 grow_vertical = 0
-theme = ExtResource("2_j6mtn")
+theme = ExtResource("3_ruak8")
 text = "Save"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -129,70 +140,100 @@ layout_mode = 2
 
 [node name="GridContainer" type="GridContainer" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 26
 columns = 3
 
-[node name="TextureButton" type="TextureButton" parent="VBoxContainer/GridContainer"]
+[node name="Control" type="Control" parent="VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
-toggle_mode = true
-button_group = ExtResource("7_htcbd")
-texture_normal = ExtResource("7_wvnvw")
-texture_pressed = ExtResource("8_wvnvw")
 
-[node name="TextureButton2" type="TextureButton" parent="VBoxContainer/GridContainer"]
-layout_mode = 2
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer/GridContainer/Control"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
 toggle_mode = true
 button_group = ExtResource("7_htcbd")
-texture_normal = ExtResource("7_nmd03")
-texture_pressed = ExtResource("10_bp147")
+texture_normal = ExtResource("6_wvnvw")
+texture_pressed = ExtResource("7_oj4yy")
+ignore_texture_size = true
+stretch_mode = 0
 
-[node name="TextureButton3" type="TextureButton" parent="VBoxContainer/GridContainer"]
+[node name="Control2" type="Control" parent="VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
-toggle_mode = true
-button_group = ExtResource("7_htcbd")
-texture_normal = ExtResource("10_3336s")
-texture_pressed = ExtResource("12_ershq")
 
-[node name="TextureButton4" type="TextureButton" parent="VBoxContainer/GridContainer"]
-layout_mode = 2
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer/GridContainer/Control2"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
 toggle_mode = true
 button_group = ExtResource("7_htcbd")
-texture_normal = ExtResource("11_iedbk")
-texture_pressed = ExtResource("14_6aif7")
+texture_normal = ExtResource("9_ruak8")
+texture_pressed = ExtResource("10_oaqao")
+ignore_texture_size = true
+stretch_mode = 0
 
-[node name="TextureButton5" type="TextureButton" parent="VBoxContainer/GridContainer"]
+[node name="Control3" type="Control" parent="VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
-toggle_mode = true
-button_group = ExtResource("7_htcbd")
-texture_normal = ExtResource("12_bp147")
-texture_pressed = ExtResource("16_ajoli")
 
-[node name="TextureButton6" type="TextureButton" parent="VBoxContainer/GridContainer"]
-layout_mode = 2
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer/GridContainer/Control3"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
 toggle_mode = true
 button_group = ExtResource("7_htcbd")
-texture_normal = ExtResource("13_6aif7")
-texture_pressed = ExtResource("18_wjl4b")
+texture_normal = ExtResource("11_8lj5j")
+texture_pressed = ExtResource("12_q5xot")
+ignore_texture_size = true
+stretch_mode = 0
 
-[node name="TextureButton7" type="TextureButton" parent="VBoxContainer/GridContainer"]
+[node name="Control4" type="Control" parent="VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
-toggle_mode = true
-button_group = ExtResource("7_htcbd")
-texture_normal = ExtResource("14_bf4o6")
-texture_pressed = ExtResource("20_yy5hh")
 
-[node name="TextureButton8" type="TextureButton" parent="VBoxContainer/GridContainer"]
-layout_mode = 2
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer/GridContainer/Control4"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
 toggle_mode = true
 button_group = ExtResource("7_htcbd")
-texture_normal = ExtResource("13_a13qd")
-texture_pressed = ExtResource("22_68h72")
+texture_normal = ExtResource("13_lr3no")
+texture_pressed = ExtResource("14_ajoli")
+ignore_texture_size = true
+stretch_mode = 0
 
-[node name="TextureButton9" type="TextureButton" parent="VBoxContainer/GridContainer"]
+[node name="Control5" type="Control" parent="VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer/GridContainer/Control5"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
 toggle_mode = true
 button_group = ExtResource("7_htcbd")
-texture_normal = ExtResource("16_htcbd")
-texture_pressed = ExtResource("24_pvjt7")
+texture_normal = ExtResource("15_wjl4b")
+texture_pressed = ExtResource("16_yy5hh")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Control6" type="Control" parent="VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer/GridContainer/Control6"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
+scale = Vector2(0.992957, 0.985507)
+toggle_mode = true
+button_group = ExtResource("7_htcbd")
+texture_normal = ExtResource("17_68h72")
+texture_pressed = ExtResource("18_pvjt7")
+ignore_texture_size = true
+stretch_mode = 0
 
 [node name="OnscreenKeyboard" type="PanelContainer" parent="."]
 visible = false

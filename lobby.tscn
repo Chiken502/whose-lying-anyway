@@ -1,23 +1,38 @@
-[gd_scene load_steps=19 format=3 uid="uid://cim1mr1tw2qdi"]
+[gd_scene load_steps=20 format=3 uid="uid://cim1mr1tw2qdi"]
 
 [ext_resource type="Script" uid="uid://cectt70f02c8g" path="res://lobby.gd" id="1_ll2xe"]
-[ext_resource type="FontFile" uid="uid://bk8cljd32x2a6" path="res://fonts/FredokaOne-Regular.ttf" id="2_tftiq"]
-[ext_resource type="Texture2D" uid="uid://c3cl7pcrtbgye" path="res://art/code-bx.png" id="3_1gg6n"]
-[ext_resource type="FontFile" uid="uid://bifjmjlp0jm8y" path="res://fonts/Allerta-Regular.ttf" id="4_x4164"]
+[ext_resource type="Theme" uid="uid://bajyshsvf048u" path="res://resorces/Button.tres" id="4_x4164"]
 [ext_resource type="Texture2D" uid="uid://dn8a3i3eh24ow" path="res://art/lobby box.png" id="5_1gg6n"]
-[ext_resource type="Theme" uid="uid://dp5xifpnhgndh" path="res://resorces/primary button.tres" id="6_x4164"]
+[ext_resource type="FontFile" uid="uid://del0lm4mxab10" path="res://fonts/Jaro-Regular.ttf" id="6_gm5bj"]
 [ext_resource type="FontFile" uid="uid://clivndmyfkxv5" path="res://fonts/Font Awesome 7 Free-Solid-900.otf" id="7_8ldoj"]
-[ext_resource type="FontFile" uid="uid://douxg81f21tp4" path="res://fonts/Fredoka-Regular.ttf" id="8_ein8w"]
 [ext_resource type="PackedScene" uid="uid://bmh20ht2rv6fb" path="res://qrcode.tscn" id="9_gm5bj"]
 
+[sub_resource type="Gradient" id="Gradient_gm5bj"]
+colors = PackedColorArray(0.427451, 0.345098, 0.882353, 1, 0.831373, 0.796078, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_g30ku"]
+gradient = SubResource("Gradient_gm5bj")
+fill_from = Vector2(1, 1)
+metadata/_snap_enabled = true
+
 [sub_resource type="LabelSettings" id="LabelSettings_8ldoj"]
-font = ExtResource("2_tftiq")
-font_size = 32
-font_color = Color(0, 0, 0, 1)
+font = ExtResource("6_gm5bj")
+font_size = 40
+font_color = Color(0.0470588, 0.027451, 0.152941, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_selw0"]
+bg_color = Color(1, 0.870588, 0.403922, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="Theme" id="Theme_b454d"]
+Panel/styles/panel = SubResource("StyleBoxFlat_selw0")
 
 [sub_resource type="LabelSettings" id="LabelSettings_ein8w"]
-font = ExtResource("4_x4164")
-font_size = 20
+font = ExtResource("6_gm5bj")
+font_size = 40
 font_color = Color(0, 0, 0, 1)
 outline_size = 2
 outline_color = Color(0, 0, 0, 1)
@@ -54,7 +69,9 @@ Button/styles/normal = SubResource("StyleBoxFlat_up7ya")
 Button/styles/pressed = SubResource("StyleBoxFlat_mcopp")
 
 [sub_resource type="Theme" id="Theme_gm5bj"]
-Window/fonts/title_font = ExtResource("8_ein8w")
+Window/constants/title_height = 25
+Window/font_sizes/title_font_size = 32
+Window/fonts/title_font = ExtResource("6_gm5bj")
 
 [node name="Lobby" type="Control"]
 layout_mode = 3
@@ -64,6 +81,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ll2xe")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_g30ku")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -88,17 +114,18 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Control2" type="Control" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 20)
+custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/VBoxContainer"]
+[node name="Panel" type="Panel" parent="VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-texture = ExtResource("3_1gg6n")
+theme = SubResource("Theme_b454d")
 
-[node name="Label2" type="Label" parent="VBoxContainer/VBoxContainer/TextureRect2"]
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer/Panel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -118,7 +145,7 @@ vertical_alignment = 1
 uppercase = true
 
 [node name="Control" type="Control" parent="VBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 23)
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/VBoxContainer"]
@@ -140,10 +167,6 @@ custom_minimum_size = Vector2(190, 0)
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Control2" type="Control" parent="VBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
-
 [node name="start" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
@@ -152,12 +175,12 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -110.0
-offset_top = -49.0
+offset_top = -60.0
 offset_right = 110.0
-offset_bottom = -25.0
+offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 0
-theme = ExtResource("6_x4164")
+theme = ExtResource("4_x4164")
 text = "Start Game"
 
 [node name="close" type="Button" parent="."]
@@ -173,12 +196,11 @@ text = "circle-xmark"
 [node name="customize" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.94
-anchor_right = 0.112
+anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 16.0
-offset_top = 16.02
-offset_bottom = -29.0
+offset_left = 10.0
+offset_top = -60.0
+offset_bottom = -20.0
 grow_vertical = 0
 theme = SubResource("Theme_7pn7i")
 theme_override_font_sizes/font_size = 40
@@ -279,6 +301,7 @@ shortcut_keys_enabled = false
 middle_mouse_paste_enabled = false
 drag_and_drop_selection_enabled = false
 
+[connection signal="pressed" from="start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="close" to="." method="_on_close_pressed"]
 [connection signal="pressed" from="customize" to="." method="_on_customize_pressed"]
 [connection signal="pressed" from="qrcode" to="." method="_on_qrcode_pressed"]

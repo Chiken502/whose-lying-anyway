@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://dqxvm7bu873gi"]
 
 [ext_resource type="Script" uid="uid://drbibcq48b3so" path="res://lobby_title.gd" id="1_qkshp"]
-[ext_resource type="FontFile" uid="uid://i4id1a1pbprl" path="res://fonts/Fredoka-Medium.ttf" id="2_22q8j"]
 [ext_resource type="Texture2D" uid="uid://gb0nos4c46d7" path="res://art/icon.png" id="2_qkshp"]
+[ext_resource type="FontFile" uid="uid://del0lm4mxab10" path="res://fonts/Jaro-Regular.ttf" id="3_qkshp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_22q8j"]
 bg_color = Color(0.0941176, 0.0470588, 0.0627451, 1)
@@ -15,7 +15,7 @@ corner_radius_bottom_left = 5
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_22q8j")
 
 [sub_resource type="LabelSettings" id="LabelSettings_qkshp"]
-font = ExtResource("2_22q8j")
+font = ExtResource("3_qkshp")
 font_size = 20
 font_color = Color(0.941176, 0.960784, 0.862745, 1)
 

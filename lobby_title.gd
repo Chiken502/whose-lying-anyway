@@ -3,15 +3,12 @@ extends Control
 var player_name : String = ""
 var avatar : Texture2D
 var avatar_list := [
-	preload("res://art/avatars/avatars_crab.png"),
-	preload("res://art/avatars/avatars_elephant.png"),
-	preload("res://art/avatars/avatars_Loin.png"),
-	preload("res://art/avatars/avatars_octopus.png"),
-	preload("res://art/avatars/avatars_parot.png"),
-	preload("res://art/avatars/avatars_penguin.png"),
-	preload("res://art/avatars/avatars_puffin.png"),
-	preload("res://art/avatars/avatars_seal.png"),
-	preload("res://art/avatars/avatars_starfish.png")
+	preload("res://art/avatars/avatar_1.png"),
+	preload("res://art/avatars/avatar_2.png"),
+	preload("res://art/avatars/avatar_3.png"),
+	preload("res://art/avatars/avatar_4.png"),
+	preload("res://art/avatars/avatar_5.png"),
+	preload("res://art/avatars/avatar_6.png"),
 ]
 
 var player_state

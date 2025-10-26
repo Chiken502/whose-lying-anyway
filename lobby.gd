@@ -7,13 +7,25 @@ func _ready() -> void:
 	$QRPanel.hide()
 	if not PlayroomControler.getRoomCode() is String:
 		await get_tree().create_timer(1).timeout
-		$VBoxContainer/VBoxContainer/TextureRect2/Label2.text = add_spaces_between_chars(str(PlayroomControler.getRoomCode()))
+		$VBoxContainer/VBoxContainer/Panel/Label.text = add_spaces_between_chars(str(PlayroomControler.getRoomCode()))
 		load_existing_titles()
+		if not PlayroomControler.Playroom.isHost():
+			$start.hide()
 	
-	$VBoxContainer/VBoxContainer/TextureRect2/Label2.text = add_spaces_between_chars(str(PlayroomControler.getRoomCode()))
+	if not PlayroomControler.Playroom.isHost():
+		$start.hide()
+	else:
+		PlayroomControler.Playroom.setState("story", "no story")
+	
+	$VBoxContainer/VBoxContainer/Panel/Label.text = add_spaces_between_chars(str(PlayroomControler.getRoomCode()))
 	
 	PlayroomControler.player_joined.connect(player_update)
 	PlayroomControler.player_left.connect(player_update)
+	PlayroomControler.player_left.connect(func():
+		if PlayroomControler.Playroom.isHost():
+			$start.show()
+			print("Player quit, start showing, hopefully")
+		)
 	PlayroomControler.player_changed_avatar.connect(player_update)
 	
 	await get_tree().create_timer(0.5).timeout
@@ -37,6 +49,12 @@ func add_spaces_between_chars(input: String) -> String:
 		if i < input.length() - 1:
 			result += "  "  # Two spaces
 	return result
+
+func show_start_button():
+	if not PlayroomControler.Playroom.isHost():
+		$start.show()
+		print("Player quit, start showing, hopefully")
+
 
 func player_update():
 	print("Player_update")
@@ -92,3 +110,13 @@ func _on_close_qrpanel_pressed() -> void:
 # ============ END OF QRCODE ============ #
 func _on_customize_pressed() -> void:
 	get_tree().change_scene_to_file("res://customise.tscn")
+
+
+func _on_start_pressed() -> void:
+	var pack_idx = randi_range(0, Starters.story_starters.size())
+	print(pack_idx)
+	var key = Starters.story_starters.keys()[pack_idx]
+	var starter = Starters.story_starters[key][randi_range(0, 2)]
+	print(starter)
+	PlayroomControler.Playroom.setState("starter", starter)
+	RPCstate.callRPC("start_game")

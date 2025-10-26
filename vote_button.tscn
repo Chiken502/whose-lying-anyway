@@ -1,0 +1,119 @@
+[gd_scene load_steps=15 format=3 uid="uid://f6vhp4clqw0e"]
+
+[ext_resource type="Script" uid="uid://bih0vrnu3250" path="res://vote_button.gd" id="1_28svp"]
+[ext_resource type="FontFile" uid="uid://douxg81f21tp4" path="res://fonts/Fredoka-Regular.ttf" id="1_jlqln"]
+[ext_resource type="FontFile" uid="uid://del0lm4mxab10" path="res://fonts/Jaro-Regular.ttf" id="3_jlqln"]
+[ext_resource type="FontFile" uid="uid://cfugcwniib2a7" path="res://fonts/KayPhoDu-SemiBold.ttf" id="4_28svp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_28svp"]
+content_margin_left = 10.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.15)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_28svp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n82ke"]
+content_margin_left = 10.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(100, 100, 100, 0.15)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gaycp"]
+content_margin_left = 10.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mpqdh"]
+content_margin_left = 10.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(100, 100, 100, 0.2)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.831373, 0.796078, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Theme" id="Theme_mpqdh"]
+Button/colors/font_color = Color(0.12, 0.12, 0.12, 0)
+Button/colors/font_disabled_color = Color(0.12, 0.12, 0.12, 0)
+Button/colors/font_focus_color = Color(0.05, 0.05, 0.05, 0)
+Button/colors/font_hover_color = Color(0.05, 0.05, 0.05, 0)
+Button/colors/font_hover_pressed_color = Color(0, 0, 0, 0)
+Button/colors/font_pressed_color = Color(0, 0, 0, 0)
+Button/font_sizes/font_size = 18
+Button/fonts/font = ExtResource("1_jlqln")
+Button/styles/disabled = SubResource("StyleBoxFlat_28svp")
+Button/styles/focus = SubResource("StyleBoxEmpty_28svp")
+Button/styles/hover = SubResource("StyleBoxFlat_n82ke")
+Button/styles/normal = SubResource("StyleBoxFlat_gaycp")
+Button/styles/pressed = SubResource("StyleBoxFlat_mpqdh")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jlqln"]
+content_margin_left = 7.0
+content_margin_right = 7.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_28svp"]
+font = ExtResource("3_jlqln")
+font_size = 20
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n82ke"]
+content_margin_left = 7.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_n82ke"]
+font = ExtResource("4_28svp")
+font_color = Color(1, 1, 1, 0.470588)
+
+[node name="vote button" type="Button"]
+custom_minimum_size = Vector2(290, 50)
+offset_right = 290.0
+offset_bottom = 78.0
+theme = SubResource("Theme_mpqdh")
+toggle_mode = true
+alignment = 0
+autowrap_mode = 3
+script = ExtResource("1_28svp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_jlqln")
+text = "Anwser"
+label_settings = SubResource("LabelSettings_28svp")
+autowrap_mode = 3
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_n82ke")
+text = "Author"
+label_settings = SubResource("LabelSettings_n82ke")
+
+[connection signal="resized" from="VBoxContainer/Label" to="." method="_on_label_resized"]
+[connection signal="resized" from="VBoxContainer/Label2" to="." method="_on_label_resized"]

@@ -1,0 +1,131 @@
+[gd_scene load_steps=10 format=3 uid="uid://0de0yhgmfmt2"]
+
+[ext_resource type="Script" uid="uid://dy6skkw6i6h7h" path="res://loading.gd" id="1_1l04a"]
+[ext_resource type="FontFile" uid="uid://b2iblndwjfpej" path="res://fonts/Fredoka-SemiBold.ttf" id="1_gov4d"]
+[ext_resource type="Texture2D" uid="uid://di5r68kt2yac7" path="res://art/loading.png" id="2_pg7vo"]
+
+[sub_resource type="Gradient" id="Gradient_1l04a"]
+colors = PackedColorArray(1, 0.870588, 0.403922, 1, 0.0470588, 0.027451, 0.152941, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ecfth"]
+gradient = SubResource("Gradient_1l04a")
+fill_from = Vector2(1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_pg7vo"]
+font = ExtResource("1_gov4d")
+font_size = 40
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_pg7vo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Loading"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_gov4d"]
+resource_name = "load"
+length = 1.6
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": ["Loading", "Loading.", "Loading..", "Loading..."]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1l04a"]
+_data = {
+&"RESET": SubResource("Animation_pg7vo"),
+&"load": SubResource("Animation_gov4d")
+}
+
+[node name="Loading" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1l04a")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 376.0
+offset_bottom = 667.0
+texture = SubResource("GradientTexture2D_ecfth")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -71.5
+offset_top = -24.5
+offset_right = 100.5
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Loading"
+label_settings = SubResource("LabelSettings_pg7vo")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_1l04a")
+}
+autoplay = "load"
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_bottom = -181.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="Control"]
+texture = ExtResource("2_pg7vo")

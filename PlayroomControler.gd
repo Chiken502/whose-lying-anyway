@@ -22,9 +22,10 @@ func bridgeToJS(cb):
 func host():
 	var initOptions = JavaScriptBridge.create_object("Object");
 	
-	initOptions.skipLobby = true
+	initOptions.skipLobby = true 
 	
 	Playroom.insertCoin(initOptions, bridgeToJS(onInsertCoin));
+	
 	
 	get_tree().change_scene_to_file("res://lobby.tscn")
  
@@ -64,7 +65,7 @@ params.get('r');
 
  
 # Called when the host has started the game
-func onInsertCoin(args):
+func onInsertCoin(_args):
 	print("Coin Inserted!")
 	Playroom.onPlayerJoin(bridgeToJS(onPlayerJoin))
 	
@@ -96,7 +97,7 @@ func onPlayerJoin(args):
 	
 	if Playroom.isHost():
 		if not state.getState("avatar_idx"):
-			state.setState("avatar_idx", randi_range(0, 8))
+			state.setState("avatar_idx", randi_range(0, 5))
 		#test this
 		if not state.getState("name"):
 			state.setState("name", state.getProfile().name)
@@ -105,10 +106,15 @@ func onPlayerJoin(args):
 		print("newcomer not processed")
 	
 	player_joined.emit()
+	state.setState("sentence", "")
 	
+	RPCstate.registerRPC(state, "start_game", _start_game, true)
 	RPCstate.registerRPC(state, "customize_reload", _reload_titles)
+	RPCstate.registerRPC(state, "change_scene", _rpc_change_scene)
+	RPCstate.registerRPC(state, "score_updated", _score_updated)
+	print(RPCstate.registeredKeys)
 	
-	var onQuitcb = func(args):
+	var onQuitcb = func(_args):
 		print("State Array before: ", player_states)
 		player_states.erase(state)
 		print("player quit: ", state.id)
@@ -119,10 +125,66 @@ func onPlayerJoin(args):
 	# Listen to onQuit event
 	state.onQuit(bridgeToJS(onQuitcb))
 
-func _reload_titles(value):
+func _reload_titles(_value):
 	print("== Reloading titles on this client ==")
 	
 	player_changed_avatar.emit()
 
+func _start_game(_value):
+	print("== Starting Game ==")
+	get_tree().change_scene_to_file("res://text_entry_page.tscn")
+
+func _rpc_change_scene(value):
+	var path = value[0]
+	get_tree().change_scene_to_file(path)
+
+func _score_updated(player): #used when host updates, rpc
+	if Playroom.isHost():
+		return
+	# If the results scene is currently active, forward the updated player state
+	var current = get_tree().get_current_scene()
+	if current and current.filename.find("results.tscn") != -1:
+		# results.gd exposes update_player_score(player_state)
+		if current.has_method("update_player_score"):
+			current.update_player_score(player)
+
 func getRoomCode():
 	return Playroom.getRoomCode()
+
+func assign_judge():
+	if Playroom.isHost():
+		var judge_player = player_states.pick_random()
+		
+		print("Judge Id: " + judge_player.id +", Judge Name: " + judge_player.getState("name"))
+		
+		Playroom.setState("judge_id", judge_player.id)
+	else:
+		print("non host can't assign judge")
+
+
+func check_if_last(key : String, ready_scene : String, not_ready_scene : String = "res://waiting.tscn"): 
+	var all_ready = true
+	for player in player_states:
+		if player.getState(key):
+			var sentence = player.getState(key)
+			if sentence == null or !(sentence is String) or sentence == "":
+				all_ready = false
+				break
+			else:
+				continue
+		else:
+			all_ready = false
+			break
+	
+	if key == "sentence":
+		assign_judge()
+	
+	if all_ready:
+		print("all ready!")
+		
+		
+		RPCstate.callRPC("change_scene", ready_scene)
+		get_tree().change_scene_to_file("res://loading.tscn")
+	else:
+		print("not last")
+		get_tree().change_scene_to_file(not_ready_scene)

@@ -1,0 +1,143 @@
+[gd_scene load_steps=13 format=3 uid="uid://cxl4v8tjtic77"]
+
+[ext_resource type="Script" uid="uid://b478138dbsj51" path="res://text_entry_page.gd" id="1_5lupo"]
+[ext_resource type="FontFile" uid="uid://xrq2gs2d7qiw" path="res://fonts/KayPhoDu-Bold.ttf" id="1_uo6v0"]
+[ext_resource type="FontFile" uid="uid://coasokk6f2ok0" path="res://fonts/KayPhoDu-Regular.ttf" id="2_5lupo"]
+[ext_resource type="Theme" uid="uid://bajyshsvf048u" path="res://resorces/Button.tres" id="3_n21ci"]
+[ext_resource type="FontFile" uid="uid://bnojpwk6htfak" path="res://fonts/KayPhoDu-Medium.ttf" id="5_n21ci"]
+[ext_resource type="Script" uid="uid://bysffchi16s3i" path="res://addons/addons/onscreenkeyboard/onscreen_keyboard.gd" id="6_hu2nk"]
+
+[sub_resource type="Gradient" id="Gradient_hu2nk"]
+colors = PackedColorArray(0.172549, 0.109804, 0.509804, 1, 0.427451, 0.345098, 0.882353, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hdbk2"]
+gradient = SubResource("Gradient_hu2nk")
+fill_from = Vector2(1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ajt4j"]
+font = ExtResource("1_uo6v0")
+font_size = 24
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vrp0w"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.04545, 0.027, 0.15, 0.313726)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="Theme" id="Theme_akalt"]
+TextEdit/font_sizes/font_size = 16
+TextEdit/fonts/font = ExtResource("2_5lupo")
+TextEdit/styles/focus = SubResource("StyleBoxFlat_vrp0w")
+TextEdit/styles/normal = SubResource("StyleBoxFlat_vrp0w")
+TextEdit/styles/read_only = null
+
+[sub_resource type="LabelSettings" id="LabelSettings_hu2nk"]
+font = ExtResource("5_n21ci")
+font_color = Color(0.560784, 0.231373, 0.113725, 1)
+outline_size = 5
+outline_color = Color(0.286275, 0.113725, 0.0784314, 1)
+
+[node name="Text Entry Page" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5lupo")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_hdbk2")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.064
+anchor_right = 0.939
+anchor_bottom = 0.391
+offset_top = -928.0
+offset_right = -0.125031
+offset_bottom = 0.202972
+grow_horizontal = 2
+text = "Something may have gone wrong..."
+label_settings = SubResource("LabelSettings_ajt4j")
+horizontal_alignment = 1
+vertical_alignment = 2
+autowrap_mode = 3
+
+[node name="TextEdit" type="TextEdit" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -123.5
+offset_top = -13.5
+offset_right = 132.5
+offset_bottom = 178.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_akalt")
+placeholder_text = "The sun was setting on a... (max 1 sentance plz)"
+virtual_keyboard_enabled = false
+wrap_mode = 1
+scroll_fit_content_height = true
+draw_tabs = true
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -110.0
+offset_top = -68.0
+offset_right = 110.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("3_n21ci")
+text = "Submit Sentance"
+
+[node name="Label" type="Label" parent="Button"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -135.5
+offset_top = -36.0
+offset_right = 135.5
+offset_bottom = -75.0
+grow_horizontal = 2
+text = "Needs to be EXACTLY one sentance"
+label_settings = SubResource("LabelSettings_hu2nk")
+horizontal_alignment = 1
+
+[node name="OnscreenKeyboard" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -144.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("6_hu2nk")
+metadata/_custom_type_script = "uid://bysffchi16s3i"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
