@@ -14,12 +14,6 @@ func _ready() -> void:
 	var is_ios = JavaScriptBridge.eval("(function() { return /webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent); })()");
 	$OnscreenKeyboard.auto_show = is_ios
 
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 func check_sentences(text : String): 
 	var js_code = "JSON.stringify(nlp('%s').sentences().out('array'))" % text #TODO: add a check for too long/ has one . but is too long.
 	var sentences : Array = JSON.parse_string(JavaScriptBridge.eval(js_code))

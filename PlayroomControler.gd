@@ -138,15 +138,17 @@ func _rpc_change_scene(value):
 	var path = value[0]
 	get_tree().change_scene_to_file(path)
 
-func _score_updated(player): #used when host updates, rpc
+func _score_updated(_args): #used when host updates, rpc
+	print("== Updating Scores ==")
 	if Playroom.isHost():
 		return
 	# If the results scene is currently active, forward the updated player state
 	var current = get_tree().get_current_scene()
 	if current and current.filename.find("results.tscn") != -1:
-		# results.gd exposes update_player_score(player_state)
-		if current.has_method("update_player_score"):
-			current.update_player_score(player)
+		# results.gd exposes update_player_score_cards()
+		if current.has_method("update_player_score_cards"):
+			print("has method update_player_score_cards")
+			current.update_player_score_cards()
 
 func getRoomCode():
 	return Playroom.getRoomCode()

@@ -3,6 +3,7 @@ extends Control
 var final_results = false
 
 var id_to_card := {}
+var wining_player
 
 const POPULAR_VOTE_POINTS := 200
 const JUDGE_FUNNIEST_POINTS := 200
@@ -17,7 +18,7 @@ func _ready() -> void:
 		$continue.hide()
 		await get_tree().create_timer(0.5).timeout
 	
-	var wining_player = ScoreManager.collect_votes()
+	wining_player = ScoreManager.collect_votes()
 	if wining_player:
 		print("winning player id:", wining_player.id)
 		$ScrollContainer/VBoxContainer/winner.text = wining_player.getState("name") + " won with..."
@@ -32,54 +33,22 @@ func _ready() -> void:
 	var players = PlayroomControler.player_states
 	print("players: ", players)
 
-	var index = 0
 	print("looping")
 
 	id_to_card.clear()
+	# Award popular vote points once on the host, before building UI
+	if PlayroomControler.Playroom.isHost() and wining_player:
+		for p in players:
+			if p.id == wining_player.id:
+				var cur = 0
+				if p.getState("score"):
+					cur = p.getState("score")
+				var new_score = cur + POPULAR_VOTE_POINTS
+				p.setState("score", new_score)
+				print("[DEBUG] _ready: awarding POPULAR_VOTE_POINTS to", p.id, "old:", cur, "new:", new_score)
+				break
 
-	# Work on a copy so we don't mutate the authoritative list order
-	var sorted_players = players.duplicate()
-	# Sort players by score descending so highest score shows first
-	sorted_players.sort_custom(Callable(self, "_compare_players"))
-	
-	var my_name = PlayroomControler.Playroom.myPlayer().getState("name")
-
-	for player in sorted_players:
-		var card = preload("res://score_card.tscn").instantiate()
-		print("index :", index)
-
-		index += 1
-		$"ScrollContainer/VBoxContainer/Score containers".add_child(card)
-
-		var player_name = player.getState("name")
-		print("currently on player: ", player_name)
-		var is_self = my_name == player_name
-
-		card.set_player_name_txt(player_name)
-		if is_self:
-			print("is self")
-			card.set_color()
-
-		var current_score = 0
-		if player.getState("score"):
-			current_score = player.getState("score")
-		print("score set: ", current_score)
-
-		card.set_score_txt(current_score)
-		print("card score set")
-
-		id_to_card[player.id] = card
-
-		if wining_player and player.id == wining_player.id:
-			var new_score = current_score
-			if PlayroomControler.Playroom.isHost():
-				new_score += POPULAR_VOTE_POINTS
-			# Only the host should change authoritative score state
-			if PlayroomControler.Playroom.isHost():
-				player.setState("score", new_score)
-			# Animate to the new score on every client
-			card.animate_score(new_score, 1.0)
-			card.is_winner = true
+	build_score_cards(players)
 
 	# Handle judge picks if present. Expected format set by judge_chamber.gd:
 	# [judge_id, funniest_id, plot_twist_id, callback_id]
@@ -118,14 +87,44 @@ func _ready() -> void:
 			_award_points(players, id_to_card, plot_twist_id, JUDGE_PLOT_TWIST_POINTS)
 		if callback_id:
 			_award_points(players, id_to_card, callback_id, JUDGE_CALLBACK_POINTS)
-
-	# Ensure the initial display reflects sorted order
-	_resort_display()
+		
+		RPCstate.callRPC("score_updated")
+		print("RPC score_updated called")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass
+
+
+func build_score_cards(players: Array) -> void:
+	var sorted_players = players.duplicate()
+	sorted_players.sort_custom(Callable(self, "_compare_players"))
+
+	var my_name = PlayroomControler.Playroom.myPlayer().getState("name")
+
+	for player in sorted_players:
+		var card = preload("res://score_card.tscn").instantiate()
+		$"ScrollContainer/VBoxContainer/Score containers".add_child(card)
+
+		var player_name = player.getState("name")
+		var is_self = my_name == player_name
+
+		card.set_player_name_txt(player_name)
+		if is_self:
+			card.set_color()
+
+		var current_score = 0
+		if player.getState("score"):
+			current_score = player.getState("score")
+
+		card.set_score_txt(current_score)
+
+		id_to_card[player.id] = card
+
+		# mark winner visually
+		if wining_player and player.id == wining_player.id:
+			card.is_winner = true
 
 
 func _award_points(players: Array, cards: Dictionary, target_id: String, points: int) -> void:
@@ -137,27 +136,18 @@ func _award_points(players: Array, cards: Dictionary, target_id: String, points:
 			var new_s = cur + points
 			# Only host should change authoritative state
 			if PlayroomControler.Playroom.isHost():
+				print("[DEBUG] _award_points: awarding", points, "to", pl.id, "old:", cur, "new:", new_s)
 				pl.setState("score", new_s)
-				RPCstate.callRPC("score_updated", pl)
-				# Update host display immediately
-				update_player_score(pl)
 			if cards.has(target_id):
 				cards[target_id].animate_score(new_s, 0.9)
 			return
 
-
-func update_player_score(player_state) -> void: 
-	# Called by RPC to reflect authoritative score changes on all clients
-	if not player_state:
+func update_player_score_cards():
+	print("UPDATING PLAYER SCORE CARDS")
+	if PlayroomControler.Playroom.isHost():
 		return
-	var pid = player_state.id
-	var score = 0
-	if player_state.getState("score"):
-		score = player_state.getState("score")
-	if id_to_card.has(pid):
-		id_to_card[pid].set_score_txt(score)
-		id_to_card[pid].animate_score(score, 0.4)
-
+	
+	build_score_cards(PlayroomControler.player_states)
 
 func _compare_players(a, b) -> int:
 	var sa = 0
@@ -171,38 +161,6 @@ func _compare_players(a, b) -> int:
 	return -1 if sa > sb else 1
 
 
-func _resort_display() -> void:
-	var container = $"ScrollContainer/VBoxContainer/Score containers"
-	var entries := []
-	for pid in id_to_card.keys():
-		var card = id_to_card[pid]
-		var sc = 0
-		# Try to read authoritative score from player state
-		for ps in PlayroomControler.player_states:
-			if ps.id == pid:
-				if ps.getState("score"):
-					sc = ps.getState("score")
-				break
-		entries.append({"id": pid, "score": sc, "card": card})
-
-	entries.sort_custom(Callable(self, "_compare_entries"))
-	entries.reverse()
-
-	# Reorder children in the container to match sorted entries
-	var children = container.get_children()
-	# Remove all child nodes from container (they remain instanced)
-	for child in children:
-		container.remove_child(child)
-
-	for e in entries:
-		container.add_child(e.card)
-
-
-func _compare_entries(a, b) -> int:
-	if a.score == b.score:
-		return 0
-	return -1 if a.score > b.score else 1
-
 
 func _on_continue_pressed() -> void:
 	
@@ -212,7 +170,13 @@ func _on_continue_pressed() -> void:
 	
 	var starter = Starters.sentance_starter.pick_random()
 	
-	PlayroomControler.Playroom.setState("story", $ScrollContainer/VBoxContainer/sentance.text)
+	var story :String = PlayroomControler.Playroom.getState("story")
+	if story == "no story":
+		story = ""
+	
+	story += $ScrollContainer/VBoxContainer/sentance.text
+	
+	PlayroomControler.Playroom.setState("story", story)
 	PlayroomControler.Playroom.setState("starter", starter)
 	
 	RPCstate.callRPC("change_scene", "res://text_entry_page.tscn")

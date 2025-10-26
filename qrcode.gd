@@ -8,14 +8,14 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 func load_qr(url:String):
 	http_node.request("https://api.qrserver.com/v1/create-qr-code/?data=" + url + "&size=250x250")
 	
 
-func _on_http_request_request_completed(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray) -> void:
+func _on_http_request_request_completed(_result: int, response_code: int, _headers: PackedStringArray, body: PackedByteArray) -> void:
 	if response_code == 200:
 		var img = Image.new()
 		var err = img.load_png_from_buffer(body)

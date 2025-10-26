@@ -72,14 +72,14 @@ layout_mode = 2
 
 [node name="winner" type="Label" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
-text = "Chicken502 won with..."
+text = "_________ won with..."
 label_settings = SubResource("LabelSettings_7jyyn")
 horizontal_alignment = 1
 
 [node name="sentance" type="Label" parent="ScrollContainer/VBoxContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
-text = "A Giant Bear came out of nowhere and said “MY NAME IS DARLEEN AND I WOULD LOVE TO EAT”."
+text = "Something went wrong"
 label_settings = SubResource("LabelSettings_ph8o5")
 horizontal_alignment = 1
 vertical_alignment = 1

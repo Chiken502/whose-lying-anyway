@@ -24,7 +24,6 @@ func _ready() -> void:
 	PlayroomControler.player_left.connect(func():
 		if PlayroomControler.Playroom.isHost():
 			$start.show()
-			print("Player quit, start showing, hopefully")
 		)
 	PlayroomControler.player_changed_avatar.connect(player_update)
 	
@@ -39,7 +38,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 func add_spaces_between_chars(input: String) -> String:
@@ -86,6 +85,10 @@ func load_existing_titles():
 		title.avatar = avatar
 		
 		title.player_state = player
+		
+		if PlayroomControler.Playroom.myPlayer().getState("name") == player_name:
+			title.set_player_color()
+		
 		title.update()
 
 

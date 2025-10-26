@@ -8,7 +8,7 @@ func _ready() -> void:
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if is_winner:
 		$Crown.show()
 	else:
@@ -21,8 +21,8 @@ func _process(delta: float) -> void:
 		if $Control.visible == true:
 			$Control.hide()
 
-func set_player_name_txt(name :String):
-	$Name.text = name
+func set_player_name_txt(player_name :String):
+	$Name.text = player_name
 
 func set_score_txt(score : int):
 	$Score.text = str(score).pad_zeros(3)
