@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://cninwqt3xqn2g"]
 
-[ext_resource type="Script" uid="uid://de54cnpa6q3jk" path="res://joining.gd" id="1_fuegy"]
+[ext_resource type="Script" uid="uid://de54cnpa6q3jk" path="res://scripts/joining.gd" id="1_fuegy"]
 [ext_resource type="FontFile" uid="uid://douxg81f21tp4" path="res://fonts/Fredoka-Regular.ttf" id="2_p3awv"]
 [ext_resource type="Theme" uid="uid://1rt6ffl40eg" path="res://resorces/font-awesome-icons.tres" id="3_6vr3o"]
 [ext_resource type="Texture2D" uid="uid://ba17wr3igeq8p" path="res://art/join-text-box.png" id="3_tdxbx"]

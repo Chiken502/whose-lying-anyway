@@ -11,7 +11,7 @@ func _ready() -> void:
 	
 	for player in players:
 		print("loading player: ", player.id)
-		var option_card = preload("res://vote_button.tscn").instantiate()
+		var option_card = preload("res://scenes/vote_button.tscn").instantiate()
 		print("loading sentence")
 		option_card.title = player.getState("sentence")
 		print("sentence found")
@@ -71,4 +71,4 @@ func _on_button_pressed() -> void:
 	print("jc id", me.id)
 	print("jc gets: ", me.getState("judge_funniest"), me.getState("judge_plot_twist"), me.getState("judge_callback"))
 
-	PlayroomControler.check_if_last("vote", "res://results.tscn")
+	PlayroomControler.check_if_last("vote", "res://scenes/results.tscn")

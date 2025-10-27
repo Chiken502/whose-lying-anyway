@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://17umk3l37r0e"]
 
-[ext_resource type="FontFile" uid="uid://xrq2gs2d7qiw" path="res://fonts/KayPhoDu-Bold.ttf" id="1_ntlln"]
-[ext_resource type="Script" uid="uid://csvnqrncmcql" path="res://voting.gd" id="1_nxq1t"]
-[ext_resource type="Theme" uid="uid://bajyshsvf048u" path="res://resorces/Button.tres" id="4_dyoi3"]
+[ext_resource type="Script" uid="uid://csvnqrncmcql" path="res://scripts/voting.gd" id="1_ux0cl"]
+[ext_resource type="FontFile" uid="uid://xrq2gs2d7qiw" path="res://fonts/KayPhoDu-Bold.ttf" id="2_42aia"]
+[ext_resource type="Theme" uid="uid://bajyshsvf048u" path="res://resorces/Button.tres" id="3_q1pfn"]
 
 [sub_resource type="Gradient" id="Gradient_dlx7t"]
 colors = PackedColorArray(0.0470588, 0.027451, 0.152941, 1, 0.172549, 0.109804, 0.509804, 1)
@@ -12,7 +12,7 @@ gradient = SubResource("Gradient_dlx7t")
 fill_from = Vector2(1, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_ntlln"]
-font = ExtResource("1_ntlln")
+font = ExtResource("2_42aia")
 font_size = 24
 
 [node name="Voting" type="Control"]
@@ -22,7 +22,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_nxq1t")
+script = ExtResource("1_ux0cl")
 metadata/_edit_vertical_guides_ = [-384.0, -256.0]
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -76,7 +76,7 @@ layout_mode = 2
 
 [node name="Button" type="Button" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("4_dyoi3")
+theme = ExtResource("3_q1pfn")
 text = "Submit Vote"
 
 [node name="spacing3" type="Control" parent="ScrollContainer/VBoxContainer"]

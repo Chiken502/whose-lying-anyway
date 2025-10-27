@@ -27,7 +27,7 @@ func host():
 	Playroom.insertCoin(initOptions, bridgeToJS(onInsertCoin));
 	
 	
-	get_tree().change_scene_to_file("res://lobby.tscn")
+	get_tree().change_scene_to_file("res://scenes/lobby.tscn")
  
 func join_game(code : String):
 	var initOptions = JavaScriptBridge.create_object("Object");
@@ -71,7 +71,7 @@ func onInsertCoin(_args):
 	
 	if joining:
 		if not Playroom.isHost():
-			get_tree().change_scene_to_file("res://lobby.tscn")
+			get_tree().change_scene_to_file("res://scenes/lobby.tscn")
 			print("existing game")
 		else:
 			print("not a valid code")
@@ -132,7 +132,7 @@ func _reload_titles(_value):
 
 func _start_game(_value):
 	print("== Starting Game ==")
-	get_tree().change_scene_to_file("res://text_entry_page.tscn")
+	get_tree().change_scene_to_file("res://scenes/text_entry_page.tscn")
 
 func _rpc_change_scene(value):
 	var path = value[0]
@@ -144,7 +144,7 @@ func _score_updated(_args): #used when host updates, rpc
 		return
 	# If the results scene is currently active, forward the updated player state
 	var current = get_tree().get_current_scene()
-	if current and current.filename.find("results.tscn") != -1:
+	if current and current.filename.find("scenes/results.tscn") != -1: #CHECK THIS
 		# results.gd exposes update_player_score_cards()
 		if current.has_method("update_player_score_cards"):
 			print("has method update_player_score_cards")
@@ -164,7 +164,7 @@ func assign_judge():
 		print("non host can't assign judge")
 
 
-func check_if_last(key : String, ready_scene : String, not_ready_scene : String = "res://waiting.tscn"): 
+func check_if_last(key : String, ready_scene : String, not_ready_scene : String = "res://scenes/waiting.tscn"): 
 	var all_ready = true
 	for player in player_states:
 		if player.getState(key):
@@ -186,7 +186,14 @@ func check_if_last(key : String, ready_scene : String, not_ready_scene : String 
 		
 		
 		RPCstate.callRPC("change_scene", ready_scene)
-		get_tree().change_scene_to_file("res://loading.tscn")
+		get_tree().change_scene_to_file("res://scenes/loading.tscn")
 	else:
 		print("not last")
 		get_tree().change_scene_to_file(not_ready_scene)
+
+
+# TODO: Add end including final results and restarts
+#TODO: Reorganize files w/ folders
+#TODO: account for late player joining
+#TODO: add min limit of players to start a game
+#TODO: Add in Bounus Word Rounds (Optional)

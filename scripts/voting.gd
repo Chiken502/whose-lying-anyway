@@ -13,7 +13,7 @@ func _ready() -> void:
 		if me.id == judge_id:
 			print("your a judge")
 			await get_tree().process_frame
-			var error = get_tree().change_scene_to_file("res://judge_chamber.tscn")
+			var error = get_tree().change_scene_to_file("res://scenes/judge_chamber.tscn")
 			print(error)
 	
 	
@@ -29,7 +29,7 @@ func _ready() -> void:
 		if player.getState("sentence"):
 			var sentence = player.getState("sentence")
 			
-			var button := preload("res://vote_button.tscn").instantiate()
+			var button := preload("res://scenes/vote_button.tscn").instantiate()
 			ButtonContainer.add_child(button)
 			
 			button.title = sentence
@@ -53,4 +53,4 @@ func _on_button_pressed() -> void:
 	var player_id = ScoreManager.find_player_id(player_name)
 	
 	me.setState("vote", player_id)
-	PlayroomControler.check_if_last("vote", "res://results.tscn")
+	PlayroomControler.check_if_last("vote", "res://scenes/results.tscn")

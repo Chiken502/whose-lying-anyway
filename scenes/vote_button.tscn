@@ -1,9 +1,9 @@
 [gd_scene load_steps=15 format=3 uid="uid://f6vhp4clqw0e"]
 
-[ext_resource type="Script" uid="uid://bih0vrnu3250" path="res://vote_button.gd" id="1_28svp"]
-[ext_resource type="FontFile" uid="uid://douxg81f21tp4" path="res://fonts/Fredoka-Regular.ttf" id="1_jlqln"]
-[ext_resource type="FontFile" uid="uid://del0lm4mxab10" path="res://fonts/Jaro-Regular.ttf" id="3_jlqln"]
-[ext_resource type="FontFile" uid="uid://cfugcwniib2a7" path="res://fonts/KayPhoDu-SemiBold.ttf" id="4_28svp"]
+[ext_resource type="FontFile" uid="uid://douxg81f21tp4" path="res://fonts/Fredoka-Regular.ttf" id="1_58v5j"]
+[ext_resource type="Script" uid="uid://bih0vrnu3250" path="res://scripts/vote_button.gd" id="2_56i2d"]
+[ext_resource type="FontFile" uid="uid://del0lm4mxab10" path="res://fonts/Jaro-Regular.ttf" id="3_glw4s"]
+[ext_resource type="FontFile" uid="uid://cfugcwniib2a7" path="res://fonts/KayPhoDu-SemiBold.ttf" id="4_4527k"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_28svp"]
 content_margin_left = 10.0
@@ -60,7 +60,7 @@ Button/colors/font_hover_color = Color(0.05, 0.05, 0.05, 0)
 Button/colors/font_hover_pressed_color = Color(0, 0, 0, 0)
 Button/colors/font_pressed_color = Color(0, 0, 0, 0)
 Button/font_sizes/font_size = 18
-Button/fonts/font = ExtResource("1_jlqln")
+Button/fonts/font = ExtResource("1_58v5j")
 Button/styles/disabled = SubResource("StyleBoxFlat_28svp")
 Button/styles/focus = SubResource("StyleBoxEmpty_28svp")
 Button/styles/hover = SubResource("StyleBoxFlat_n82ke")
@@ -72,14 +72,14 @@ content_margin_left = 7.0
 content_margin_right = 7.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_28svp"]
-font = ExtResource("3_jlqln")
+font = ExtResource("3_glw4s")
 font_size = 20
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n82ke"]
 content_margin_left = 7.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_n82ke"]
-font = ExtResource("4_28svp")
+font = ExtResource("4_4527k")
 font_color = Color(1, 1, 1, 0.470588)
 
 [node name="vote button" type="Button"]
@@ -90,7 +90,7 @@ theme = SubResource("Theme_mpqdh")
 toggle_mode = true
 alignment = 0
 autowrap_mode = 3
-script = ExtResource("1_28svp")
+script = ExtResource("2_56i2d")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1

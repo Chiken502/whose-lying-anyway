@@ -15,7 +15,7 @@ func _ready() -> void:
 	$OnscreenKeyboard.auto_show = is_ios
 
 func check_sentences(text : String): 
-	var js_code = "JSON.stringify(nlp('%s').sentences().out('array'))" % text #TODO: add a check for too long/ has one . but is too long.
+	var js_code = "JSON.stringify(nlp('%s').sentences().out('array'))" % text
 	var sentences : Array = JSON.parse_string(JavaScriptBridge.eval(js_code))
 	return sentences.size()
 
@@ -34,7 +34,7 @@ func _on_button_pressed() -> void: # add logic for formating
 	if sentence_amounts == 1:
 		var me = PlayroomControler.Playroom.myPlayer()
 		me.setState("sentence",sentence)
-		PlayroomControler.check_if_last("sentence", "res://voting.tscn")
+		PlayroomControler.check_if_last("sentence", "res://scenes/voting.tscn")
 	elif sentence_amounts == 0:
 		$Button/Label.show()
 		$Button/Label.text = "You must have one sentance at least"

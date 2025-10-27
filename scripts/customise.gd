@@ -27,7 +27,7 @@ func _on_back_pressed() -> void:
 	if check_for_save_needed():
 		$ConfirmationDialog.show()
 	else:
-		get_tree().change_scene_to_file("res://lobby.tscn")
+		get_tree().change_scene_to_file("res://scenes/lobby.tscn")
 
 
 func _on_save_pressed() -> void:
@@ -35,7 +35,7 @@ func _on_save_pressed() -> void:
 
 
 func _on_confirmation_dialog_confirmed() -> void:
-	get_tree().change_scene_to_file("res://lobby.tscn")
+	get_tree().change_scene_to_file("res://scenes/lobby.tscn")
 
 func check_for_save_needed() -> bool:
 	var avatar_idx = get_new_avatar_idx()
@@ -65,4 +65,4 @@ func save():
 	player.setState("name", $VBoxContainer/Control2/LineEdit.text)
 	player.setState("avatar_idx", get_new_avatar_idx())
 	RPCstate.callRPC("customize_reload")
-	get_tree().change_scene_to_file("res://lobby.tscn")
+	get_tree().change_scene_to_file("res://scenes/lobby.tscn")

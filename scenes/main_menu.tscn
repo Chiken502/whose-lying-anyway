@@ -1,12 +1,12 @@
 [gd_scene load_steps=19 format=3 uid="uid://elms5ca3xlmf"]
 
-[ext_resource type="Script" uid="uid://b024hbbrfqnu8" path="res://main_menu.gd" id="1_06t4h"]
-[ext_resource type="FontFile" uid="uid://del0lm4mxab10" path="res://fonts/Jaro-Regular.ttf" id="2_nlkkf"]
-[ext_resource type="FontFile" uid="uid://coasokk6f2ok0" path="res://fonts/KayPhoDu-Regular.ttf" id="2_qe12f"]
-[ext_resource type="Texture2D" uid="uid://b3yiaocyxpf6r" path="res://art/Button icon 1.png" id="4_qe12f"]
-[ext_resource type="Texture2D" uid="uid://b1pwoxvqvytun" path="res://art/Button icon 2.png" id="6_8qtwp"]
-[ext_resource type="Texture2D" uid="uid://c7724dvttvibf" path="res://art/Button icon 3.png" id="6_qe12f"]
-[ext_resource type="FontFile" uid="uid://bdb46xde6uw4t" path="res://fonts/Fredoka-Light.ttf" id="8_8qtwp"]
+[ext_resource type="Script" uid="uid://b024hbbrfqnu8" path="res://scripts/main_menu.gd" id="1_oa1go"]
+[ext_resource type="FontFile" uid="uid://coasokk6f2ok0" path="res://fonts/KayPhoDu-Regular.ttf" id="2_tbmy8"]
+[ext_resource type="FontFile" uid="uid://del0lm4mxab10" path="res://fonts/Jaro-Regular.ttf" id="3_jk1qb"]
+[ext_resource type="Texture2D" uid="uid://b3yiaocyxpf6r" path="res://art/Button icon 1.png" id="4_5dd4i"]
+[ext_resource type="Texture2D" uid="uid://b1pwoxvqvytun" path="res://art/Button icon 2.png" id="5_lgwnu"]
+[ext_resource type="Texture2D" uid="uid://c7724dvttvibf" path="res://art/Button icon 3.png" id="6_flqon"]
+[ext_resource type="FontFile" uid="uid://bdb46xde6uw4t" path="res://fonts/Fredoka-Light.ttf" id="7_rcqid"]
 
 [sub_resource type="Gradient" id="Gradient_8qtwp"]
 colors = PackedColorArray(0.427451, 0.345098, 0.882353, 1, 0.831373, 0.796078, 1, 1)
@@ -17,12 +17,12 @@ fill_from = Vector2(1, 1)
 metadata/_snap_enabled = true
 
 [sub_resource type="LabelSettings" id="LabelSettings_w44g7"]
-font = ExtResource("2_qe12f")
+font = ExtResource("2_tbmy8")
 font_size = 10
 font_color = Color(0, 0, 0, 0.552941)
 
 [sub_resource type="LabelSettings" id="LabelSettings_iotk1"]
-font = ExtResource("2_nlkkf")
+font = ExtResource("3_jk1qb")
 font_size = 45
 font_color = Color(0.0470588, 0.027451, 0.152941, 1)
 
@@ -46,7 +46,7 @@ Button/colors/font_pressed_color = Color(0, 0, 0, 1)
 Button/constants/h_separation = 20
 Button/constants/icon_max_width = 27
 Button/font_sizes/font_size = 24
-Button/fonts/font = ExtResource("2_qe12f")
+Button/fonts/font = ExtResource("2_tbmy8")
 Button/styles/disabled = SubResource("StyleBoxEmpty_qe12f")
 Button/styles/focus = SubResource("StyleBoxEmpty_8qtwp")
 Button/styles/hover = SubResource("StyleBoxEmpty_dy7ct")
@@ -54,7 +54,7 @@ Button/styles/normal = SubResource("StyleBoxEmpty_0o4t1")
 Button/styles/pressed = SubResource("StyleBoxEmpty_0k4wn")
 
 [sub_resource type="LabelSettings" id="LabelSettings_dy7ct"]
-font = ExtResource("8_8qtwp")
+font = ExtResource("7_rcqid")
 font_size = 10
 font_color = Color(0, 0, 0, 0.454902)
 
@@ -65,7 +65,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_06t4h")
+script = ExtResource("1_oa1go")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -123,21 +123,21 @@ theme_override_constants/separation = 40
 layout_mode = 2
 theme = SubResource("Theme_dy7ct")
 text = "Host Game"
-icon = ExtResource("4_qe12f")
+icon = ExtResource("4_5dd4i")
 alignment = 0
 
 [node name="Join" type="Button" parent="VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_dy7ct")
 text = "Join"
-icon = ExtResource("6_8qtwp")
+icon = ExtResource("5_lgwnu")
 alignment = 0
 
 [node name="Settings" type="Button" parent="VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_dy7ct")
 text = "Settings"
-icon = ExtResource("6_qe12f")
+icon = ExtResource("6_flqon")
 alignment = 0
 
 [node name="Label" type="Label" parent="."]

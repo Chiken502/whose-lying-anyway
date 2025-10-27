@@ -104,7 +104,7 @@ func build_score_cards(players: Array) -> void:
 	var my_name = PlayroomControler.Playroom.myPlayer().getState("name")
 
 	for player in sorted_players:
-		var card = preload("res://score_card.tscn").instantiate()
+		var card = preload("res://scenes/score_card.tscn").instantiate()
 		$"ScrollContainer/VBoxContainer/Score containers".add_child(card)
 
 		var player_name = player.getState("name")
@@ -179,4 +179,4 @@ func _on_continue_pressed() -> void:
 	PlayroomControler.Playroom.setState("story", story)
 	PlayroomControler.Playroom.setState("starter", starter)
 	
-	RPCstate.callRPC("change_scene", "res://text_entry_page.tscn")
+	RPCstate.callRPC("change_scene", "res://scenes/text_entry_page.tscn")

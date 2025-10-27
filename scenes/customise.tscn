@@ -1,7 +1,7 @@
 [gd_scene load_steps=25 format=3 uid="uid://nlv43ppw08wh"]
 
 [ext_resource type="Theme" uid="uid://1rt6ffl40eg" path="res://resorces/font-awesome-icons.tres" id="1_06xt3"]
-[ext_resource type="Script" uid="uid://rhuucs614m6r" path="res://customise.gd" id="1_wjl4b"]
+[ext_resource type="Script" uid="uid://rhuucs614m6r" path="res://scripts/customise.gd" id="1_wjl4b"]
 [ext_resource type="FontFile" uid="uid://douxg81f21tp4" path="res://fonts/Fredoka-Regular.ttf" id="3_g6hab"]
 [ext_resource type="Theme" uid="uid://bajyshsvf048u" path="res://resorces/Button.tres" id="3_ruak8"]
 [ext_resource type="Texture2D" uid="uid://ba17wr3igeq8p" path="res://art/join-text-box.png" id="4_kilu6"]

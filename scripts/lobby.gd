@@ -67,7 +67,7 @@ func load_existing_titles():
 	var Vbox = $VBoxContainer/VBoxContainer/TextureRect/ScrollContainer/VBoxContainer
 	var current_players_titles = Vbox.get_children()
 	for player in PlayroomControler.player_states:
-		var title = preload("res://lobby_title.tscn").instantiate()
+		var title = preload("res://scenes/lobby_title.tscn").instantiate()
 		
 		Vbox.add_child(title)
 		
@@ -112,14 +112,14 @@ func _on_close_qrpanel_pressed() -> void:
 
 # ============ END OF QRCODE ============ #
 func _on_customize_pressed() -> void:
-	get_tree().change_scene_to_file("res://customise.tscn")
+	get_tree().change_scene_to_file("res://scenes/customise.tscn")
 
 
 func _on_start_pressed() -> void:
 	var pack_idx = randi_range(0, Starters.story_starters.size())
 	print(pack_idx)
 	var key = Starters.story_starters.keys()[pack_idx]
-	var starter = Starters.story_starters[key][randi_range(0, 2)]
+	var starter = Starters.story_starters[key][randi_range(0, 4)]
 	print(starter)
 	PlayroomControler.Playroom.setState("starter", starter)
 	RPCstate.callRPC("start_game")

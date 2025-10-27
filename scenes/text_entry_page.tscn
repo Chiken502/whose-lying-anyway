@@ -1,11 +1,11 @@
 [gd_scene load_steps=13 format=3 uid="uid://cxl4v8tjtic77"]
 
-[ext_resource type="Script" uid="uid://b478138dbsj51" path="res://text_entry_page.gd" id="1_5lupo"]
-[ext_resource type="FontFile" uid="uid://xrq2gs2d7qiw" path="res://fonts/KayPhoDu-Bold.ttf" id="1_uo6v0"]
-[ext_resource type="FontFile" uid="uid://coasokk6f2ok0" path="res://fonts/KayPhoDu-Regular.ttf" id="2_5lupo"]
-[ext_resource type="Theme" uid="uid://bajyshsvf048u" path="res://resorces/Button.tres" id="3_n21ci"]
-[ext_resource type="FontFile" uid="uid://bnojpwk6htfak" path="res://fonts/KayPhoDu-Medium.ttf" id="5_n21ci"]
-[ext_resource type="Script" uid="uid://bysffchi16s3i" path="res://addons/addons/onscreenkeyboard/onscreen_keyboard.gd" id="6_hu2nk"]
+[ext_resource type="Script" uid="uid://b478138dbsj51" path="res://scripts/text_entry_page.gd" id="1_efdxq"]
+[ext_resource type="FontFile" uid="uid://xrq2gs2d7qiw" path="res://fonts/KayPhoDu-Bold.ttf" id="2_sqrx8"]
+[ext_resource type="FontFile" uid="uid://coasokk6f2ok0" path="res://fonts/KayPhoDu-Regular.ttf" id="3_w7qga"]
+[ext_resource type="Theme" uid="uid://bajyshsvf048u" path="res://resorces/Button.tres" id="4_boyht"]
+[ext_resource type="FontFile" uid="uid://bnojpwk6htfak" path="res://fonts/KayPhoDu-Medium.ttf" id="5_cmk7r"]
+[ext_resource type="Script" uid="uid://bysffchi16s3i" path="res://addons/addons/onscreenkeyboard/onscreen_keyboard.gd" id="6_noj3l"]
 
 [sub_resource type="Gradient" id="Gradient_hu2nk"]
 colors = PackedColorArray(0.172549, 0.109804, 0.509804, 1, 0.427451, 0.345098, 0.882353, 1)
@@ -15,7 +15,7 @@ gradient = SubResource("Gradient_hu2nk")
 fill_from = Vector2(1, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_ajt4j"]
-font = ExtResource("1_uo6v0")
+font = ExtResource("2_sqrx8")
 font_size = 24
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vrp0w"]
@@ -31,13 +31,13 @@ corner_radius_bottom_left = 15
 
 [sub_resource type="Theme" id="Theme_akalt"]
 TextEdit/font_sizes/font_size = 16
-TextEdit/fonts/font = ExtResource("2_5lupo")
+TextEdit/fonts/font = ExtResource("3_w7qga")
 TextEdit/styles/focus = SubResource("StyleBoxFlat_vrp0w")
 TextEdit/styles/normal = SubResource("StyleBoxFlat_vrp0w")
 TextEdit/styles/read_only = null
 
 [sub_resource type="LabelSettings" id="LabelSettings_hu2nk"]
-font = ExtResource("5_n21ci")
+font = ExtResource("5_cmk7r")
 font_color = Color(0.560784, 0.231373, 0.113725, 1)
 outline_size = 5
 outline_color = Color(0.286275, 0.113725, 0.0784314, 1)
@@ -49,7 +49,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_5lupo")
+script = ExtResource("1_efdxq")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -109,7 +109,7 @@ offset_right = 110.0
 offset_bottom = -28.0
 grow_horizontal = 2
 grow_vertical = 0
-theme = ExtResource("3_n21ci")
+theme = ExtResource("4_boyht")
 text = "Submit Sentance"
 
 [node name="Label" type="Label" parent="Button"]
@@ -137,7 +137,7 @@ anchor_bottom = 1.0
 offset_top = -144.0
 grow_horizontal = 2
 grow_vertical = 0
-script = ExtResource("6_hu2nk")
+script = ExtResource("6_noj3l")
 metadata/_custom_type_script = "uid://bysffchi16s3i"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://c3d2alr2mowkk"]
 
-[ext_resource type="Script" uid="uid://dx6y4k542vg5n" path="res://score_card.gd" id="1_6hjkt"]
+[ext_resource type="Script" uid="uid://dx6y4k542vg5n" path="res://scripts/score_card.gd" id="1_6hjkt"]
 [ext_resource type="FontFile" uid="uid://cfugcwniib2a7" path="res://fonts/KayPhoDu-SemiBold.ttf" id="1_u1k5y"]
 [ext_resource type="FontFile" uid="uid://coasokk6f2ok0" path="res://fonts/KayPhoDu-Regular.ttf" id="2_gtm7i"]
 [ext_resource type="FontFile" uid="uid://clivndmyfkxv5" path="res://fonts/Font Awesome 7 Free-Solid-900.otf" id="3_gtm7i"]

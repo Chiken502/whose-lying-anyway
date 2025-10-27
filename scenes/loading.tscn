@@ -1,6 +1,5 @@
-[gd_scene load_steps=10 format=3 uid="uid://0de0yhgmfmt2"]
+[gd_scene load_steps=9 format=3 uid="uid://0de0yhgmfmt2"]
 
-[ext_resource type="Script" uid="uid://dy6skkw6i6h7h" path="res://loading.gd" id="1_1l04a"]
 [ext_resource type="FontFile" uid="uid://b2iblndwjfpej" path="res://fonts/Fredoka-SemiBold.ttf" id="1_gov4d"]
 [ext_resource type="Texture2D" uid="uid://di5r68kt2yac7" path="res://art/loading.png" id="2_pg7vo"]
 
@@ -86,7 +85,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_1l04a")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0

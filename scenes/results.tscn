@@ -1,23 +1,23 @@
 [gd_scene load_steps=9 format=3 uid="uid://snfg3fe8omi1"]
 
-[ext_resource type="Script" uid="uid://cikm054vg7vs1" path="res://results.gd" id="1_5erdf"]
-[ext_resource type="FontFile" uid="uid://del0lm4mxab10" path="res://fonts/Jaro-Regular.ttf" id="1_amp1b"]
-[ext_resource type="FontFile" uid="uid://coasokk6f2ok0" path="res://fonts/KayPhoDu-Regular.ttf" id="3_e1an3"]
-[ext_resource type="FontFile" uid="uid://xrq2gs2d7qiw" path="res://fonts/KayPhoDu-Bold.ttf" id="3_ph8o5"]
-[ext_resource type="Theme" uid="uid://bajyshsvf048u" path="res://resorces/Button.tres" id="6_7jyyn"]
+[ext_resource type="Script" uid="uid://cikm054vg7vs1" path="res://scripts/results.gd" id="1_w6ibn"]
+[ext_resource type="FontFile" uid="uid://del0lm4mxab10" path="res://fonts/Jaro-Regular.ttf" id="2_ph3j5"]
+[ext_resource type="FontFile" uid="uid://xrq2gs2d7qiw" path="res://fonts/KayPhoDu-Bold.ttf" id="3_2q2pa"]
+[ext_resource type="FontFile" uid="uid://coasokk6f2ok0" path="res://fonts/KayPhoDu-Regular.ttf" id="4_ujvko"]
+[ext_resource type="Theme" uid="uid://bajyshsvf048u" path="res://resorces/Button.tres" id="5_44tbk"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mabgl"]
-font = ExtResource("1_amp1b")
+font = ExtResource("2_ph3j5")
 font_size = 48
 font_color = Color(0.831373, 0.796078, 1, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_7jyyn"]
-font = ExtResource("3_ph8o5")
+font = ExtResource("3_2q2pa")
 font_size = 18
 font_color = Color(0.427451, 0.345098, 0.882353, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_ph8o5"]
-font = ExtResource("3_e1an3")
+font = ExtResource("4_ujvko")
 font_size = 20
 font_color = Color(0.831373, 0.796078, 1, 1)
 
@@ -28,7 +28,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_5erdf")
+script = ExtResource("1_w6ibn")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -106,7 +106,7 @@ offset_right = 128.0
 offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 0
-theme = ExtResource("6_7jyyn")
+theme = ExtResource("5_44tbk")
 text = "Continue"
 
 [connection signal="pressed" from="continue" to="." method="_on_continue_pressed"]
