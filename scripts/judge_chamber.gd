@@ -5,6 +5,13 @@ extends Control
 func _ready() -> void:
 	print("current scene judege chamber")
 	
+	var story = PlayroomControler.Playroom.getState("story")
+	var starter = PlayroomControler.Playroom.getState("starter")
+	if story != "no story":
+		$ScrollContainer/VBoxContainer/story.text = story + " " + starter + "..."
+	else:
+		$ScrollContainer/VBoxContainer/story.text = starter + "..."
+	
 	
 	var players = PlayroomControler.player_states
 	var index = 0
@@ -20,7 +27,7 @@ func _ready() -> void:
 		index += 1
 		
 		print("checking player")
-		if PlayroomControler.Playroom.myPlayer() == player:
+		if PlayroomControler.Playroom.myPlayer().getState("name") == player.getState("name"):
 			option_card.caption = "Yours"
 		
 		print("myPlayer found and checked")
@@ -41,12 +48,16 @@ func _process(_delta: float) -> void:
 
 
 func _on_button_pressed() -> void:
-	var me = PlayroomControler.Playroom.myPlayer()
-	
 	var OptionContainer = $ScrollContainer/VBoxContainer/OptionContainer
 	var funniest = $ScrollContainer/VBoxContainer/OptionContainer/OptionButton.selected
 	var plot_twist = $ScrollContainer/VBoxContainer/OptionContainer/OptionButton2.selected
 	var callback = $ScrollContainer/VBoxContainer/OptionContainer/OptionButton3.selected
+	
+	if funniest == -1 or plot_twist == -1 or callback == -1:
+		$"Button/warning label".show()
+		return
+	
+	var me = PlayroomControler.Playroom.myPlayer()
 	
 	var funniest_id = "" # when state is saved like this it is returned as null
 	var plot_twist_id = ""

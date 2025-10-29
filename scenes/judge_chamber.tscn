@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://2hyx1pj3nvho"]
+[gd_scene load_steps=18 format=3 uid="uid://2hyx1pj3nvho"]
 
 [ext_resource type="Script" uid="uid://buve2bs5clvv8" path="res://scripts/judge_chamber.gd" id="1_pwifa"]
 [ext_resource type="FontFile" uid="uid://del0lm4mxab10" path="res://fonts/Jaro-Regular.ttf" id="2_v1mkr"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cxjqkia3wk8fm" path="res://art/emojis/open-book_1f4d6.png" id="6_saomq"]
 [ext_resource type="Texture2D" uid="uid://2mkyvwgt5vy5" path="res://art/emojis/thinking-face_1f914.png" id="7_exicj"]
 [ext_resource type="Theme" uid="uid://bajyshsvf048u" path="res://resorces/Button.tres" id="8_oiq7q"]
+[ext_resource type="FontFile" uid="uid://bnojpwk6htfak" path="res://fonts/KayPhoDu-Medium.ttf" id="9_v1mkr"]
 
 [sub_resource type="Gradient" id="Gradient_0wyh8"]
 colors = PackedColorArray(0.0470588, 0.027451, 0.152941, 1, 0.172549, 0.109804, 0.509804, 1)
@@ -26,11 +27,21 @@ content_margin_bottom = 5.0
 font = ExtResource("2_v1mkr")
 font_size = 35
 
+[sub_resource type="LabelSettings" id="LabelSettings_v1mkr"]
+font = ExtResource("3_wsufr")
+font_size = 20
+
 [sub_resource type="Theme" id="Theme_tktgc"]
 OptionButton/fonts/font = ExtResource("3_wsufr")
 
 [sub_resource type="LabelSettings" id="LabelSettings_bu61r"]
 font = ExtResource("4_eo5db")
+
+[sub_resource type="LabelSettings" id="LabelSettings_wsufr"]
+font = ExtResource("9_v1mkr")
+font_color = Color(0.560784, 0.231373, 0.113725, 1)
+outline_size = 6
+outline_color = Color(0.286275, 0.113725, 0.0784314, 1)
 
 [node name="Judge Chamber" type="Control"]
 layout_mode = 3
@@ -72,6 +83,18 @@ text = "Your A Judge!"
 label_settings = SubResource("LabelSettings_0vop4")
 horizontal_alignment = 1
 vertical_alignment = 2
+
+[node name="spacer2" type="Control" parent="ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="story" type="Label" parent="ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+text = "Something Went Wrong..."
+label_settings = SubResource("LabelSettings_v1mkr")
+horizontal_alignment = 1
+autowrap_mode = 3
 
 [node name="ButtonContainer" type="VBoxContainer" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
@@ -143,6 +166,10 @@ position = Vector2(11, 10)
 scale = Vector2(0.04, 0.04)
 texture = ExtResource("7_exicj")
 
+[node name="spacer" type="Control" parent="ScrollContainer/VBoxContainer/OptionContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
 [node name="Button" type="Button" parent="."]
 top_level = true
 layout_mode = 1
@@ -159,5 +186,19 @@ grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("8_oiq7q")
 text = "Submit"
+
+[node name="warning label" type="Label" parent="Button"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -107.5
+offset_top = -27.0
+offset_right = 107.5
+offset_bottom = -5.0
+grow_horizontal = 2
+text = "All Categories Must Be Filled "
+label_settings = SubResource("LabelSettings_wsufr")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

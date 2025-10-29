@@ -63,3 +63,4 @@ grow_vertical = 2
 text = "Loading"
 label_settings = SubResource("LabelSettings_qkshp")
 vertical_alignment = 1
+clip_text = true

@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://emv3j3k3ghoh"]
+
+[ext_resource type="Script" uid="uid://c1nb725we5jcf" path="res://scripts/notification.gd" id="1_a8rcd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ntrqf"]
+bg_color = Color(0.21, 0.21, 0.21, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="Notification" type="Panel"]
+top_level = true
+z_index = 2
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 5.0
+offset_right = -5.0
+offset_bottom = 47.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ntrqf")
+script = ExtResource("1_a8rcd")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 7.0
+offset_top = -11.5
+offset_right = -52.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "___________ was disconected"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+ignore_time_scale = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

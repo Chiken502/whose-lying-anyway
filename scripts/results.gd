@@ -180,3 +180,6 @@ func _on_continue_pressed() -> void:
 	PlayroomControler.Playroom.setState("starter", starter)
 	
 	RPCstate.callRPC("change_scene", "res://scenes/text_entry_page.tscn")
+
+
+# TODO: add animation for scores on all clients

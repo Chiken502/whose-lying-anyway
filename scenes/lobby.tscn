@@ -227,7 +227,6 @@ ok_button_text = "Leave"
 dialog_text = "Are you sure you want to leave the lobby?"
 
 [node name="QRPanel" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -269,12 +268,12 @@ offset_right = -13.0
 offset_bottom = 24.0
 grow_horizontal = 0
 theme = SubResource("Theme_7pn7i")
-theme_override_colors/font_disabled_color = Color(0.39, 0, 0.0064999, 1)
-theme_override_colors/font_hover_pressed_color = Color(0.839216, 0, 0.0156863, 1)
-theme_override_colors/font_hover_color = Color(0.97, 0, 0.0161664, 1)
-theme_override_colors/font_color = Color(0.84, 0, 0.0139998, 1)
-theme_override_colors/font_focus_color = Color(0.839216, 0, 0.0156863, 1)
-theme_override_colors/font_pressed_color = Color(0.84, 0.2436, 0.25354, 1)
+theme_override_colors/font_disabled_color = Color(0.286275, 0.113725, 0.0784314, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.796078, 0.509804, 0.196078, 1)
+theme_override_colors/font_hover_color = Color(0.560784, 0.231373, 0.113725, 1)
+theme_override_colors/font_color = Color(0.796078, 0.509804, 0.196078, 1)
+theme_override_colors/font_focus_color = Color(0.796078, 0.509804, 0.196078, 1)
+theme_override_colors/font_pressed_color = Color(0.560784, 0.231373, 0.113725, 1)
 disabled = true
 text = "circle-xmark"
 

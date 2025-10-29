@@ -3,7 +3,7 @@ extends Node2D
 signal room_not_existing
 signal player_joined(state)
 signal player_changed_avatar
-signal player_left
+signal player_left(state)
  
 #Fetch Playroom
 var Playroom = JavaScriptBridge.get_interface("Playroom")
@@ -105,7 +105,7 @@ func onPlayerJoin(args):
 	else:
 		print("newcomer not processed")
 	
-	player_joined.emit()
+	player_joined.emit(state)
 	state.setState("sentence", "")
 	
 	RPCstate.registerRPC(state, "start_game", _start_game, true)
@@ -120,7 +120,7 @@ func onPlayerJoin(args):
 		print("player quit: ", state.id)
 		print("State Array after: ", player_states)
 		await get_tree().create_timer(0.2).timeout
-		player_left.emit()
+		player_left.emit(state)
 	
 	# Listen to onQuit event
 	state.onQuit(bridgeToJS(onQuitcb))
@@ -144,7 +144,7 @@ func _score_updated(_args): #used when host updates, rpc
 		return
 	# If the results scene is currently active, forward the updated player state
 	var current = get_tree().get_current_scene()
-	if current and current.filename.find("scenes/results.tscn") != -1: #CHECK THIS
+	if current and current.filename.find("scenes/results.tscn") != -1:
 		# results.gd exposes update_player_score_cards()
 		if current.has_method("update_player_score_cards"):
 			print("has method update_player_score_cards")
@@ -193,7 +193,6 @@ func check_if_last(key : String, ready_scene : String, not_ready_scene : String 
 
 
 # TODO: Add end including final results and restarts
-#TODO: Reorganize files w/ folders
 #TODO: account for late player joining
 #TODO: add min limit of players to start a game
 #TODO: Add in Bounus Word Rounds (Optional)

@@ -130,6 +130,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_c75wi")
 placeholder_text = "  Name"
+max_length = 13
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
 layout_mode = 2

@@ -21,7 +21,7 @@ func _ready() -> void:
 	
 	PlayroomControler.player_joined.connect(player_update)
 	PlayroomControler.player_left.connect(player_update)
-	PlayroomControler.player_left.connect(func():
+	PlayroomControler.player_left.connect(func(_state):
 		if PlayroomControler.Playroom.isHost():
 			$start.show()
 		)
@@ -46,7 +46,7 @@ func add_spaces_between_chars(input: String) -> String:
 	for i in input.length():
 		result += input[i]
 		if i < input.length() - 1:
-			result += "  "  # Two spaces
+			result += "   "  # 3 spaces
 	return result
 
 func show_start_button():
@@ -55,7 +55,7 @@ func show_start_button():
 		print("Player quit, start showing, hopefully")
 
 
-func player_update():
+func player_update(_state):
 	print("Player_update")
 	var Vbox = $VBoxContainer/VBoxContainer/TextureRect/ScrollContainer/VBoxContainer.get_children()
 	for children in Vbox:

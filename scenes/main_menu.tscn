@@ -140,7 +140,7 @@ text = "Settings"
 icon = ExtResource("6_flqon")
 alignment = 0
 
-[node name="Label" type="Label" parent="."]
+[node name="version label" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -151,7 +151,7 @@ offset_left = -65.0
 offset_top = -23.0
 grow_horizontal = 0
 grow_vertical = 0
-text = "v0.0.1Beta"
+text = "v0.0.3 Beta"
 label_settings = SubResource("LabelSettings_dy7ct")
 horizontal_alignment = 1
 vertical_alignment = 1

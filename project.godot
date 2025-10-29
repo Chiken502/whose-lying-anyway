@@ -21,6 +21,8 @@ PlayroomControler="*res://scripts/globals/PlayroomControler.gd"
 RPCstate="*res://scripts/globals/RPCstate.gd"
 Starters="*res://scripts/globals/starters.gd"
 ScoreManager="*res://scripts/globals/ScoreManager.gd"
+RoundManager="*res://scripts/globals/RoundManager.gd"
+NotificationCenter="*res://scripts/globals/NotificationCenter.gd"
 
 [display]
 
