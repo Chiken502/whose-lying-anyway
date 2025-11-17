@@ -65,7 +65,6 @@ func player_update(_state):
 func load_existing_titles():
 	print("loading")
 	var Vbox = $VBoxContainer/VBoxContainer/TextureRect/ScrollContainer/VBoxContainer
-	var current_players_titles = Vbox.get_children()
 	for player in PlayroomControler.player_states:
 		var title = preload("res://scenes/lobby_title.tscn").instantiate()
 		

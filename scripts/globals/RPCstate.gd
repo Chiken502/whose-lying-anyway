@@ -1,10 +1,10 @@
 extends Node
 
-var registeredKeys := []
+var registeredKeys := [] ##Keys of all regestered RPCs
 var _no_value = "RPC:N0 V41U3 61V3N" # in l33t
 
 
-func registerRPC(player, key: String, handler: Callable, debug := false) -> void: #registers an 'rpc', to activate the handler function, use callRPC.
+func registerRPC(player, key: String, handler: Callable, debug := false) -> void: ##registers an 'rpc', to activate the handler function, use callRPC.
 	var rpc_key = "RPC:" + key
 	registeredKeys.append(rpc_key)
 	
@@ -27,7 +27,7 @@ func registerRPC(player, key: String, handler: Callable, debug := false) -> void
 	PlayroomControler.Playroom.waitForPlayerState(player, rpc_key, PlayroomControler.bridgeToJS(callback))
 
 
-func callRPC(key: String, value : Variant = null, debug := false): #calls an rpc. only works if one is registered already.
+func callRPC(key: String, value : Variant = null, debug := false): ##calls an rpc. only works if one is registered already.
 	var rpc_key = "RPC:" + key
 	
 	if registeredKeys.find(rpc_key) == -1:

@@ -1,34 +1,28 @@
-[gd_scene load_steps=9 format=3 uid="uid://snfg3fe8omi1"]
+[gd_scene load_steps=7 format=3 uid="uid://bvdn536snb30i"]
 
-[ext_resource type="Script" uid="uid://cikm054vg7vs1" path="res://scripts/results.gd" id="1_w6ibn"]
-[ext_resource type="FontFile" uid="uid://del0lm4mxab10" path="res://fonts/Jaro-Regular.ttf" id="2_ph3j5"]
-[ext_resource type="FontFile" uid="uid://xrq2gs2d7qiw" path="res://fonts/KayPhoDu-Bold.ttf" id="3_2q2pa"]
-[ext_resource type="FontFile" uid="uid://coasokk6f2ok0" path="res://fonts/KayPhoDu-Regular.ttf" id="4_ujvko"]
-[ext_resource type="Theme" uid="uid://bajyshsvf048u" path="res://resorces/Button.tres" id="5_44tbk"]
+[ext_resource type="Script" uid="uid://cekine03n1yhf" path="res://scripts/final_results.gd" id="1_py4n7"]
+[ext_resource type="FontFile" uid="uid://del0lm4mxab10" path="res://fonts/Jaro-Regular.ttf" id="2_4aqfl"]
+[ext_resource type="FontFile" uid="uid://coasokk6f2ok0" path="res://fonts/KayPhoDu-Regular.ttf" id="3_8kwy7"]
+[ext_resource type="Theme" uid="uid://bajyshsvf048u" path="res://resorces/Button.tres" id="4_odys2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mabgl"]
-font = ExtResource("2_ph3j5")
+font = ExtResource("2_4aqfl")
 font_size = 48
 font_color = Color(0.831373, 0.796078, 1, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_7jyyn"]
-font = ExtResource("3_2q2pa")
-font_size = 18
-font_color = Color(0.427451, 0.345098, 0.882353, 1)
-
 [sub_resource type="LabelSettings" id="LabelSettings_ph8o5"]
-font = ExtResource("4_ujvko")
+font = ExtResource("3_8kwy7")
 font_size = 20
 font_color = Color(0.831373, 0.796078, 1, 1)
 
-[node name="Results" type="Control"]
+[node name="Final Results" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_w6ibn")
+script = ExtResource("1_py4n7")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -57,7 +51,7 @@ alignment = 1
 
 [node name="Label" type="Label" parent="ScrollContainer/VBoxContainer"]
 layout_mode = 2
-text = "Results"
+text = "Final Results"
 label_settings = SubResource("LabelSettings_mabgl")
 horizontal_alignment = 1
 
@@ -70,13 +64,7 @@ color = Color(0.831373, 0.796078, 1, 1)
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 
-[node name="winner" type="Label" parent="ScrollContainer/VBoxContainer"]
-layout_mode = 2
-text = "_________ won with..."
-label_settings = SubResource("LabelSettings_7jyyn")
-horizontal_alignment = 1
-
-[node name="sentance" type="Label" parent="ScrollContainer/VBoxContainer"]
+[node name="Story" type="Label" parent="ScrollContainer/VBoxContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 text = "Something went wrong"
@@ -97,7 +85,7 @@ theme_override_constants/separation = 20
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 
-[node name="continue" type="Button" parent="."]
+[node name="Back" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -110,7 +98,8 @@ offset_right = 128.0
 offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 0
-theme = ExtResource("5_44tbk")
-text = "Continue"
+theme = ExtResource("4_odys2")
+text = "Back to lobby
+"
 
-[connection signal="pressed" from="continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="Back" to="." method="_on_continue_pressed"]

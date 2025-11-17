@@ -36,7 +36,7 @@ func _ready() -> void:
 		option_card.disabled = true
 		print("child added")
 	
-
+	
 	for option in $ScrollContainer/VBoxContainer/ButtonContainer.get_children():
 		for dropdown in $ScrollContainer/VBoxContainer/OptionContainer.get_children():
 			if option.caption != "Yours":
@@ -48,7 +48,6 @@ func _process(_delta: float) -> void:
 
 
 func _on_button_pressed() -> void:
-	var OptionContainer = $ScrollContainer/VBoxContainer/OptionContainer
 	var funniest = $ScrollContainer/VBoxContainer/OptionContainer/OptionButton.selected
 	var plot_twist = $ScrollContainer/VBoxContainer/OptionContainer/OptionButton2.selected
 	var callback = $ScrollContainer/VBoxContainer/OptionContainer/OptionButton3.selected
@@ -77,9 +76,12 @@ func _on_button_pressed() -> void:
 	me.setState("judge_funniest", funniest_id)
 	me.setState("judge_plot_twist", plot_twist_id)
 	me.setState("judge_callback", callback_id)
-
+	
 	print("jc picks: funniest=", funniest_id, " plot_twist=", plot_twist_id, " callback=", callback_id)
 	print("jc id", me.id)
 	print("jc gets: ", me.getState("judge_funniest"), me.getState("judge_plot_twist"), me.getState("judge_callback"))
-
-	PlayroomControler.check_if_last("vote", "res://scenes/results.tscn")
+	
+	if RoundManager.current_round >= RoundManager.max_rounds:
+		PlayroomControler.check_if_last("vote", "") #final results screen
+	else:
+		PlayroomControler.check_if_last("vote", "res://scenes/results.tscn")

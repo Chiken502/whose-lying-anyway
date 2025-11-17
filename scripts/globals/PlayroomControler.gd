@@ -112,6 +112,7 @@ func onPlayerJoin(args):
 	RPCstate.registerRPC(state, "customize_reload", _reload_titles)
 	RPCstate.registerRPC(state, "change_scene", _rpc_change_scene)
 	RPCstate.registerRPC(state, "score_updated", _score_updated)
+	RPCstate.registerRPC(state, "sync_score", RoundManager._sync_round)
 	print(RPCstate.registeredKeys)
 	
 	var onQuitcb = func(_args):

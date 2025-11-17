@@ -53,4 +53,8 @@ func _on_button_pressed() -> void:
 	var player_id = ScoreManager.find_player_id(player_name)
 	
 	me.setState("vote", player_id)
-	PlayroomControler.check_if_last("vote", "res://scenes/results.tscn")
+	
+	if RoundManager.current_round >= RoundManager.max_rounds:
+		PlayroomControler.check_if_last("vote", "") #final results screen
+	else:
+		PlayroomControler.check_if_last("vote", "res://scenes/results.tscn")

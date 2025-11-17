@@ -99,7 +99,7 @@ func _process(_delta: float) -> void:
 
 func build_score_cards(players: Array) -> void:
 	var sorted_players = players.duplicate()
-	sorted_players.sort_custom(Callable(self, "_compare_players"))
+	sorted_players.sort_custom(_compare_players)
 
 	var my_name = PlayroomControler.Playroom.myPlayer().getState("name")
 
@@ -118,7 +118,7 @@ func build_score_cards(players: Array) -> void:
 		if player.getState("score"):
 			current_score = player.getState("score")
 
-		card.set_score_txt(current_score)
+		card.animate_score(current_score, 1)
 
 		id_to_card[player.id] = card
 
@@ -139,7 +139,7 @@ func _award_points(players: Array, cards: Dictionary, target_id: String, points:
 				print("[DEBUG] _award_points: awarding", points, "to", pl.id, "old:", cur, "new:", new_s)
 				pl.setState("score", new_s)
 			if cards.has(target_id):
-				cards[target_id].animate_score(new_s, 0.9)
+				cards[target_id].animate_score(new_s, 1)
 			return
 
 func update_player_score_cards():
@@ -179,7 +179,6 @@ func _on_continue_pressed() -> void:
 	PlayroomControler.Playroom.setState("story", story)
 	PlayroomControler.Playroom.setState("starter", starter)
 	
-	RPCstate.callRPC("change_scene", "res://scenes/text_entry_page.tscn")
-
-
-# TODO: add animation for scores on all clients
+	RoundManager.advance_rounds()
+	
+	
